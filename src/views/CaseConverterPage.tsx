@@ -4,7 +4,7 @@ import copy from 'copy-to-clipboard';
 
 const { TextArea } = Input;
 
-export default function Base64DecodePage() {
+export default function CaseConverterPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
 
@@ -45,6 +45,7 @@ export default function Base64DecodePage() {
      <Button type='primary' htmlType='submit'>
       Decode
      </Button>
+     <Button  type='primary' htmlType='submit'>Default</Button>
     </Form.Item>
    </Form>
    <Divider />
