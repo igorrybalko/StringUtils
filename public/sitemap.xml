@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://stringutils.online/</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://stringutils.online/base64-encode</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://stringutils.online/base64-decode</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://stringutils.online/md5-generator</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://stringutils.online/translit-url</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://stringutils.online/case-converter</loc>
+	<lastmod>2023-10-21T12:26:32+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+</urlset>
