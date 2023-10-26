@@ -264,7 +264,7 @@ export default function TranslitUrlPage() {
       </Button>
       <Divider />
       <div>
-        Service transliteration of Cyrillic into Latin for URL (for SEF)
+        Service transliteration of Cyrillic into Latin for URL for SEF (search engines friendly)
       </div>
       <Divider />
       <div>
