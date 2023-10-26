@@ -8,6 +8,7 @@ import Base64DecodePage from '../views/Base64DecodePage';
 import Md5GeneratorPage from '../views/Md5GeneratorPage';
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
+import NoMatch from '../views/NoMatch';
 
 const routes = createBrowserRouter([
  {
@@ -41,7 +42,7 @@ const routes = createBrowserRouter([
     id: 'case-converter',
    },
 
-   // { path: "*", element: <NoMatch /> },
+   { path: "*", element: <NoMatch /> },
   ],
  },
 ]);
