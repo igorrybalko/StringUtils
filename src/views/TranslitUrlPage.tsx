@@ -238,6 +238,7 @@ export default function TranslitUrlPage() {
       <Helmet>
         <title>Translit URL online</title>
         <meta name="description" content="Transliteration of Cyrillic into Latin for SEO. Online tool" />
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL + '/translit-url'} />
       </Helmet>
       {contextHolder}
       <h1>Translit URL</h1>
@@ -276,7 +277,7 @@ export default function TranslitUrlPage() {
           <Tag>+</Tag>
           are converted to <Tag>-</Tag>
         </div>
-        <div className='mb-24'>
+        <div className='mb-24 su-table'>
           <Table dataSource={dataSource} columns={columns} pagination={false} />
         </div>
 

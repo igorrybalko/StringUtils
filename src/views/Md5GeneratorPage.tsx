@@ -28,6 +28,7 @@ export default function Md5GeneratorPage() {
       <Helmet>
         <title>MD5 Hash Generator Online</title>
         <meta name="description" content="Online tool for generate MD5 hash" />
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL + '/md5-generator'} />
       </Helmet>
       {contextHolder}
       <h1>MD5 Hash Generator</h1>

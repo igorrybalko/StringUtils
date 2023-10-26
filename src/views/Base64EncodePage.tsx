@@ -27,6 +27,7 @@ export default function Base64EncodePage() {
       <Helmet>
         <title>Base64 Encode Online</title>
         <meta name="description" content="Encode string to Base64 format online" />
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL + '/base64-encode'} />
       </Helmet>
       {contextHolder}
       <h1>Base64 Encode</h1>

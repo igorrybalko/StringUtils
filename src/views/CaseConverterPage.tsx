@@ -49,6 +49,7 @@ export default function CaseConverterPage() {
       <Helmet>
         <title>Case Converter Online</title>
         <meta name="description" content="Online tool for convert string to upper and lower case" />
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL + '/case-converter'} />
       </Helmet>
       {contextHolder}
       <h1>Case Converter</h1>

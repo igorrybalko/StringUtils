@@ -35,6 +35,7 @@ export default function Base64DecodePage() {
       <Helmet>
         <title>Base64 Decode Online</title>
         <meta name="description" content="Decode a string from Base64 format online" />
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL + '/base64-decode'} />
       </Helmet>
       {contextHolder}
       <h1>Base64 Decode</h1>

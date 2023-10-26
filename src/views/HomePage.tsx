@@ -30,6 +30,7 @@ export default function HomePage() {
     <div>
       <Helmet>
         <title>Online String Conversion Tools</title>
+        <link rel="canonical" href={import.meta.env.VITE_SITE_URL} />
         <meta name="description" 
         content="Online tools for string conversion. Such as base64 encode and decode, MD5 hash generator, LowerCase and UpperCase" />
       </Helmet>
