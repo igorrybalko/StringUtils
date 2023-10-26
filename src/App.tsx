@@ -1,10 +1,9 @@
 import { RouterProvider } from 'react-router-dom';
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider } from 'antd';
 
 import routes from './router';
 
 function App() {
- console.log(theme);
 
  return (
   <ConfigProvider
