@@ -91,7 +91,7 @@ export default function CaseConverterPage() {
         Copy
       </Button>
       <Divider />
-      <div></div>
+      <div>This service will be useful for copywriters, content managers, and programmers for converting text to upper or lower case. Conversion is performed without reloading the page in the browser using JavaScript</div>
     </div>
   );
 }

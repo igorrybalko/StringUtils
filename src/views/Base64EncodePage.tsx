@@ -58,7 +58,7 @@ export default function Base64EncodePage() {
       </Button>
       <Divider />
       <div>
-        <p>Encode a string to Base64 online</p>
+        <h3>Encode a string to Base64 online</h3>
         <p>
           Encoding is done using the{' '}
           <a
@@ -70,6 +70,7 @@ export default function Base64EncodePage() {
           </a>{' '}
           function
         </p>
+        <p>Base64 is a standard for encoding binary data using only 64 ASCII characters. The encoding uses Latin characters A-Z, a-z, numbers 0-9 (62 characters in total) and 2 additional characters</p>
       </div>
     </div>
   );
