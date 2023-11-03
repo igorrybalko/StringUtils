@@ -69,7 +69,7 @@ export default function WordCounterPage() {
     />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/base64-decode'}
+     href={import.meta.env.VITE_SITE_URL + '/word-counter'}
     />
    </Helmet>
    {contextHolder}
