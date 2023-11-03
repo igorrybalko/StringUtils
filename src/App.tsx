@@ -4,7 +4,6 @@ import { ConfigProvider } from 'antd';
 import routes from './router';
 
 function App() {
-
  return (
   <ConfigProvider
    theme={{

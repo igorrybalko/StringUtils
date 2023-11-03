@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy } from 'react';
 
 import AppLayout from '../layouts/AppLayout';
 
@@ -9,6 +10,8 @@ import Md5GeneratorPage from '../views/Md5GeneratorPage';
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
 import NoMatch from '../views/NoMatch';
+
+const WordCounterPage = lazy(() => import('../views/WordCounterPage'));
 
 const routes = createBrowserRouter([
  {
@@ -41,7 +44,11 @@ const routes = createBrowserRouter([
     element: <CaseConverterPage />,
     id: 'case-converter',
    },
-
+   {
+    path: 'word-counter',
+    element: <WordCounterPage />,
+    id: 'word-counter',
+   },
    { path: "*", element: <NoMatch /> },
   ],
  },

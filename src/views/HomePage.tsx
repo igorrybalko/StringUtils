@@ -24,6 +24,10 @@ export default function HomePage() {
    url: '/case-converter',
    title: 'Case Converter',
   },
+  {
+    url: '/word-counter',
+    title: 'Word/Character Counter',
+   },
  ];
 
  return (
