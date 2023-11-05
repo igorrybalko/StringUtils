@@ -54,7 +54,7 @@ export default function HomePage() {
    <Divider />
    <div className="info-text">
     The service allows you to perform manipulations with text and strings online
-    for free. It is possible to encode and decode in Bass64, convert strings to
+    for free. It is possible to encode and decode in Base64, convert strings to
     upper and lower case, and generate a hash in md5. It is possible to convert
     Cyrillic to Latin for SEF (search engines friendly)
    </div>
