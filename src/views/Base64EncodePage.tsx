@@ -1,4 +1,4 @@
-import { Button, Form, Input, Divider, notification } from 'antd';
+import { Button, Form, Input, Divider, notification, Space } from 'antd';
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
@@ -10,7 +10,15 @@ export default function Base64EncodePage() {
  const [api, contextHolder] = notification.useNotification();
 
  const onFinish = (val: { text: string }) => {
-  setResult(btoa(val.text));
+  
+  try {
+    setResult(btoa(val.text));
+   } catch (err) {
+    api.error({
+     message: 'Error',
+     description: 'invalid text',
+    });
+   }
  };
 
  function copyText() {
@@ -21,6 +29,10 @@ export default function Base64EncodePage() {
    });
   }
  }
+
+ const onReset = () => {
+  setResult('');
+ };
 
  return (
   <div>
@@ -48,9 +60,14 @@ export default function Base64EncodePage() {
     </Form.Item>
 
     <Form.Item>
-     <Button type='primary' htmlType='submit'>
-      Encode
-     </Button>
+     <Space>
+      <Button type='primary' htmlType='submit'>
+       Encode
+      </Button>
+      <Button htmlType='reset' onClick={onReset}>
+       Reset
+      </Button>
+     </Space>
     </Form.Item>
    </Form>
    <Divider />

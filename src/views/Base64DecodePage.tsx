@@ -1,4 +1,4 @@
-import { Button, Form, Input, Divider, notification } from 'antd';
+import { Button, Form, Input, Divider, notification, Space } from 'antd';
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
@@ -30,6 +30,10 @@ export default function Base64DecodePage() {
   }
  }
 
+ const onReset = () => {
+  setResult('');
+ };
+
  return (
   <div>
    <Helmet>
@@ -58,9 +62,14 @@ export default function Base64DecodePage() {
     </Form.Item>
 
     <Form.Item>
-     <Button type='primary' htmlType='submit'>
-      Decode
-     </Button>
+     <Space>
+      <Button type='primary' htmlType='submit'>
+       Decode
+      </Button>
+      <Button htmlType='reset' onClick={onReset}>
+       Reset
+      </Button>
+     </Space>
     </Form.Item>
    </Form>
    <Divider />

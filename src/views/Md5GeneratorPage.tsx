@@ -1,4 +1,4 @@
-import { Button, Form, Input, Divider, notification } from 'antd';
+import { Button, Form, Input, Divider, notification, Space } from 'antd';
 import { useState } from 'react';
 import md5 from 'md5';
 import copy from 'copy-to-clipboard';
@@ -22,6 +22,10 @@ export default function Md5GeneratorPage() {
    });
   }
  }
+
+ const onReset = () => {
+  setResult('');
+ };
 
  return (
   <div>
@@ -48,9 +52,14 @@ export default function Md5GeneratorPage() {
     </Form.Item>
 
     <Form.Item>
-     <Button type='primary' htmlType='submit'>
-      Generate
-     </Button>
+     <Space>
+      <Button type='primary' htmlType='submit'>
+       Generate
+      </Button>
+      <Button htmlType='reset' onClick={onReset}>
+       Reset
+      </Button>
+     </Space>
     </Form.Item>
    </Form>
    <Divider />

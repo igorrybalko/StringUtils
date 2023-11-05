@@ -1,4 +1,4 @@
-import { Button, Form, Input, Divider, notification, Radio } from 'antd';
+import { Button, Form, Input, Divider, notification, Radio, Space } from 'antd';
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
@@ -44,6 +44,10 @@ export default function CaseConverterPage() {
   return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
  }
 
+ const onReset = () => {
+  setResult('');
+ };
+
  return (
   <div>
    <Helmet>
@@ -85,9 +89,14 @@ export default function CaseConverterPage() {
     </Form.Item>
 
     <Form.Item>
-     <Button type='primary' htmlType='submit'>
-      Convert
-     </Button>
+     <Space>
+      <Button type='primary' htmlType='submit'>
+       Convert
+      </Button>
+      <Button htmlType='reset' onClick={onReset}>
+       Reset
+      </Button>
+     </Space>
     </Form.Item>
    </Form>
    <Divider />
