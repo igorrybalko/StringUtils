@@ -53,11 +53,12 @@ export default function HomePage() {
    </Row>
    <Divider />
    <div className='info-text'>
-    The service allows you to manipulate text and strings online for free. It
-    is possible to encode and decode in <strong>Base64</strong>, convert strings to upper and
-    lower case and generate hash in <strong>md5</strong>. It is also possible to convert Cyrillic
-    to Latin for <strong>SEF</strong> (convenient for search engines). This is useful for the
-    <strong>SEO</strong>. You can also count the number of words and characters in the text.
+    The service allows you to manipulate text and strings online for free. It is
+    possible to encode and decode in <strong>Base64</strong>, convert strings to
+    upper and lower case and generate hash in <strong>md5</strong>. It is also
+    possible to convert Cyrillic to Latin for <strong>SEF</strong> (convenient
+    for search engines). This is useful for the <strong>SEO</strong>. You can
+    also count the number of words and characters in the text.
    </div>
   </div>
  );
