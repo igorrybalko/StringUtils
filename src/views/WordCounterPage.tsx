@@ -118,7 +118,7 @@ export default function WordCounterPage() {
     character limits, both in social media and academic or professional
     assignments. These tools make it easier to create precise texts and ensure
     compliance with formatting rules and length constraints, which can be
-    particularly crucial in SEO, social media, and other fields where content
+    particularly crucial in <strong>SEO</strong>, social media, and other fields where content
     accuracy and optimization are essential.
    </div>
   </div>
