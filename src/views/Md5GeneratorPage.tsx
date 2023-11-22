@@ -79,7 +79,7 @@ export default function Md5GeneratorPage() {
      is used for hashing.
     </p>
     <p>
-     Using the service you can encrypt text and passwords. MD5 cannot be
+     Using the service you can encrypt text and passwords. <strong>MD5</strong> cannot be
      decrypted, since reverse encoding is not provided in this algorithm, which
      ensures high security of encrypted data.
     </p>

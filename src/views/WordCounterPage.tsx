@@ -7,9 +7,13 @@ import {
  Space,
  Checkbox,
  Tag,
+ Col,
+ Row,
 } from 'antd';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
+
+import AppSidebar from '../components/AppSidebar';
 
 const { TextArea } = Input;
 
@@ -18,6 +22,13 @@ export default function WordCounterPage() {
  const [countWithoutSpace, setCountWithoutSpace] = useState(0);
  const [cntWords, setCntWords] = useState(0);
  const [api, contextHolder] = notification.useNotification();
+
+ const navList = [
+    {
+     title: 'Case Converter',
+     url: '/case-converter',
+    },
+   ];
 
  const countWords = (str: string) => {
   str = str.trim();
@@ -73,6 +84,8 @@ export default function WordCounterPage() {
     />
    </Helmet>
    {contextHolder}
+   <Row gutter={[24, 0]}>
+    <Col xs={24} sm={24} md={18}>
    <h1>Character (Letters) Count and Words Online Free</h1>
    <Form
     onFinish={onFinish}
@@ -121,6 +134,11 @@ export default function WordCounterPage() {
     particularly crucial in <strong>SEO</strong>, social media, and other fields where content
     accuracy and optimization are essential.
    </div>
+   </Col>
+    <Col xs={24} sm={24} md={6}>
+     <AppSidebar list={navList} />
+    </Col>
+   </Row>
   </div>
  );
 }

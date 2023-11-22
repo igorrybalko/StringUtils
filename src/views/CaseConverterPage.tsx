@@ -1,13 +1,32 @@
-import { Button, Form, Input, Divider, notification, Radio, Space } from 'antd';
+import {
+ Button,
+ Form,
+ Input,
+ Divider,
+ notification,
+ Radio,
+ Space,
+ Col,
+ Row,
+} from 'antd';
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
+
+import AppSidebar from '../components/AppSidebar';
 
 const { TextArea } = Input;
 
 export default function CaseConverterPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ const navList = [
+  {
+   title: 'Word/Character Counter',
+   url: '/word-counter',
+  },
+ ];
 
  type ConvertOption = 'lc' | 'uc' | 'cc';
 
@@ -54,7 +73,7 @@ export default function CaseConverterPage() {
     <title>Case Converter Online</title>
     <meta
      name='description'
-     content='Online tool for convert string to upper and lower case'
+     content='Online tool for convert string to uppercase, lowercase and capitalize words'
     />
     <link
      rel='canonical'
@@ -62,55 +81,70 @@ export default function CaseConverterPage() {
     />
    </Helmet>
    {contextHolder}
-   <h1>Case Converter</h1>
-   <Form
-    onFinish={onFinish}
-    autoComplete='off'
-    layout='vertical'
-    initialValues={{ option: 'lc' }}
-   >
-    <Form.Item
-     name='text'
-     rules={[{ required: true, message: 'Please enter data' }]}
-    >
-     <TextArea
-      className='textarea'
-      spellCheck='false'
-      placeholder='Type your text...'
-     />
-    </Form.Item>
+   <Row gutter={[24, 0]}>
+    <Col xs={24} sm={24} md={18}>
+     <h1>Case Converter</h1>
+     <Form
+      onFinish={onFinish}
+      autoComplete='off'
+      layout='vertical'
+      initialValues={{ option: 'lc' }}
+     >
+      <Form.Item
+       name='text'
+       rules={[{ required: true, message: 'Please enter data' }]}
+      >
+       <TextArea
+        className='textarea'
+        spellCheck='false'
+        placeholder='Type your text...'
+       />
+      </Form.Item>
 
-    <Form.Item name='option'>
-     <Radio.Group>
-      <Radio value={'lc'}>lower case</Radio>
-      <Radio value={'uc'}>UPPER CASE</Radio>
-      <Radio value={'cc'}>Capitalized Case</Radio>
-     </Radio.Group>
-    </Form.Item>
+      <Form.Item name='option'>
+       <Radio.Group>
+        <Radio value={'lc'}>lower case</Radio>
+        <Radio value={'uc'}>UPPER CASE</Radio>
+        <Radio value={'cc'}>Capitalized Case</Radio>
+       </Radio.Group>
+      </Form.Item>
 
-    <Form.Item>
-     <Space>
-      <Button type='primary' htmlType='submit'>
-       Convert
-      </Button>
-      <Button htmlType='reset' onClick={onReset}>
-       Reset
-      </Button>
-     </Space>
-    </Form.Item>
-   </Form>
-   <Divider />
-   <h2>Result:</h2>
-   <div className='p-textarea mb-24'>{result}</div>
-   <Button type='primary' onClick={copyText}>
-    Copy
-   </Button>
-   <Divider />
-   <div>
-    This service will be useful for copywriters, content managers, and
-    programmers for converting text to upper or lower case. Conversion is
-    performed without reloading the page in the browser using JavaScript
-   </div>
+      <Form.Item>
+       <Space>
+        <Button type='primary' htmlType='submit'>
+         Convert
+        </Button>
+        <Button htmlType='reset' onClick={onReset}>
+         Reset
+        </Button>
+       </Space>
+      </Form.Item>
+     </Form>
+     <Divider />
+     <h2>Result:</h2>
+     <div className='p-textarea mb-24'>{result}</div>
+     <Button type='primary' onClick={copyText}>
+      Copy
+     </Button>
+     <Divider />
+     <div>
+      Online tools for text case modification, allowing users to convert text to{' '}
+      <strong>uppercase</strong>, <strong>lowercase</strong>, or{' '}
+      <strong>capitalize</strong> words, are valuable for a variety of purposes.
+      Writers and editors can utilize these tools to ensure consistent
+      formatting and style in their documents. Content creators and social media
+      managers may find them handy for crafting eye-catching headlines or
+      captions. Additionally, programmers and developers can streamline their
+      coding practices by easily adjusting the case of variables and
+      identifiers. Overall, these online tools serve as versatile aids for
+      anyone seeking efficient and uniform text transformation, enhancing
+      readability and professionalism across different contexts.
+     </div>
+    </Col>
+    <Col xs={24} sm={24} md={6}>
+     <AppSidebar list={navList} />
+    </Col>
+   </Row>
   </div>
  );
 }
