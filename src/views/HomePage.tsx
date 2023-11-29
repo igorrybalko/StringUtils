@@ -28,6 +28,10 @@ export default function HomePage() {
    url: '/word-counter',
    title: 'Word/Character Counter',
   },
+  {
+    url: '/unixtimestamp',
+    title: 'Unix Timestamp',
+   },
  ];
 
  return (
@@ -37,7 +41,7 @@ export default function HomePage() {
     <link rel='canonical' href={import.meta.env.VITE_SITE_URL} />
     <meta
      name='description'
-     content='Online tools for string conversion. Such as base64 encode and decode, MD5 hash generator, LowerCase and UpperCase. It is also possible to count words and characters into text'
+     content='Online tools for string conversion. Such as base64 encode and decode, MD5 hash generator, Unix timestamp, LowerCase and UpperCase. It is also possible to count words and characters into text'
     />
    </Helmet>
    <h1>String conversion utilities online</h1>

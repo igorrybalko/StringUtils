@@ -10,6 +10,7 @@ import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
 import NoMatch from '../views/NoMatch';
 import WordCounterPage from '../views/WordCounterPage';
+import UnixtimestampPage from '../views/UnixtimestampPage';
 
 const routes = createBrowserRouter([
  {
@@ -46,6 +47,11 @@ const routes = createBrowserRouter([
     path: 'word-counter',
     element: <WordCounterPage />,
     id: 'word-counter',
+   },
+   {
+    path: 'unixtimestamp',
+    element: <UnixtimestampPage />,
+    id: 'unixtimestamp',
    },
    { path: "*", element: <NoMatch /> },
   ],
