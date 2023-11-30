@@ -1,0 +1,79 @@
+.dark-theme {
+ &.ant-layout {
+  background: #272727;
+  color: #fff;
+ }
+
+ .ant-checkbox-wrapper,
+ .ant-tag,
+ .ant-input-number .ant-input-number-input,
+ .ant-form-item .ant-form-item-label > label,
+ .ant-input,
+ .info-text {
+  color: #fff;
+ }
+
+ .ant-input-number .ant-input-number-input,
+ .ant-input,
+ .p-textarea,
+ .p-input {
+  background: #333;
+ }
+
+ .ant-input {
+  &:focus,
+  &:hover {
+   background: #333;
+  }
+
+  &::placeholder {
+   color: #fff;
+   opacity: 0.8;
+  }
+ }
+
+ .ant-input-status-error:not(.ant-input-disabled):not(
+   .ant-input-borderless
+  ).ant-input:focus:hover,
+ .ant-input-status-error:not(.ant-input-disabled):not(
+   .ant-input-borderless
+  ).ant-input:focus:focus,
+ .ant-input:hover,
+ .ant-input:focus {
+  background: #333;
+ }
+
+ .ant-table-wrapper .ant-table-thead > tr > td,
+ .ant-table-wrapper .ant-table-thead > tr > th {
+  background: #1d1d1d;
+  border-bottom: 1px solid #303030;
+  color: #fff;
+ }
+
+ .ant-table-wrapper .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #303030;
+
+  &.ant-table-cell-row-hover {
+   background: #1d1d1d;
+  }
+ }
+
+ .ant-table-wrapper .ant-table {
+  background: #141414;
+  color: #fff;
+ }
+ .ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td:not(:last-child):not(.ant-table-selection-column):not(
+   .ant-table-row-expand-icon-cell
+  ):not([colspan])::before,
+ .ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+   .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  background-color: #303030;
+ }
+}

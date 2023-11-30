@@ -1,20 +1,21 @@
 import { Layout } from 'antd';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
-const { Header, Footer, Content } = Layout;
+import AppHeader from '../components/AppHeader';
+import { useAppSelector } from '../hooks';
+
+const { Footer, Content } = Layout;
 
 export default function AppLayout() {
+ const darkTheme = useAppSelector((state) => state.common.darkTheme);
+
  return (
-  <Layout>
+  <Layout className={darkTheme ? 'dark-theme' : ''}>
    <div>
-    <Header>
-     <div className='wrapper'>
-      <Link to='/'>StringUtils</Link>
-     </div>
-    </Header>
+    <AppHeader />
     <Content>
      <div className='wrapper'>
-       <Outlet />
+      <Outlet />
      </div>
     </Content>
    </div>

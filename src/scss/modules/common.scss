@@ -98,3 +98,30 @@ html {
 .ant-form-item .ant-form-item-explain {
  font-size: 12px;
 }
+
+.d-flex {
+ display: flex;
+}
+
+.header-inner {
+ justify-content: space-between;
+}
+
+.header-inner__toggle {
+ cursor: pointer;
+ user-select: none;
+ color: #1677ff;
+
+ &:hover {
+  color: #69b1ff;
+ }
+}
+
+.ant-layout-header {
+ padding: 0;
+}
+
+.ant-layout-footer {
+ padding-left: 0;
+ padding-right: 0;
+}

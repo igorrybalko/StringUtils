@@ -1,12 +1,14 @@
 import { RouterProvider } from 'react-router-dom';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 
 import routes from './router';
 
 function App() {
+ //const { darkAlgorithm } = theme;
  return (
   <ConfigProvider
    theme={{
+    //algorithm: darkAlgorithm,
     token: {
      fontSize: 16,
     },

@@ -76,7 +76,7 @@ export default function WordCounterPage() {
     </title>
     <meta
      name='description'
-     content='Calculate words and symbols (letters) in text online for free, including spaces and without'
+     content='Calculate words and symbols in text online for free, including spaces and without'
     />
     <link
      rel='canonical'
@@ -86,7 +86,7 @@ export default function WordCounterPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-   <h1>Character (Letters) Count and Words Online Free</h1>
+   <h1>Character Count and Words Online Free</h1>
    <Form
     onFinish={onFinish}
     autoComplete='off'
