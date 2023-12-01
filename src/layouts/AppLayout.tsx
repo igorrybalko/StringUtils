@@ -1,5 +1,6 @@
 import { Layout } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
+import { Suspense } from 'react';
 
 import AppHeader from '../components/AppHeader';
 import { useAppSelector } from '../hooks';
@@ -15,12 +16,22 @@ export default function AppLayout() {
     <AppHeader />
     <Content>
      <div className='wrapper'>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+       <Outlet />
+      </Suspense>
      </div>
     </Content>
    </div>
    <Footer>
-    <div className='wrapper'>&copy; 2023</div>
+    <div className='wrapper'>
+     <div className='d-flex jc-sb'>
+      <div>&copy; 2023 String Utils</div>
+
+      <div>
+       <Link to='/privacy-policy'>Privacy Policy</Link>
+      </div>
+     </div>
+    </div>
    </Footer>
   </Layout>
  );

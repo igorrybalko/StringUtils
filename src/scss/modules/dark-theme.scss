@@ -4,6 +4,7 @@
   color: #fff;
  }
 
+ .ant-radio-wrapper,
  .ant-checkbox-wrapper,
  .ant-tag,
  .ant-input-number .ant-input-number-input,
@@ -26,6 +27,13 @@
    background: #333;
   }
 
+  &::placeholder {
+   color: #fff;
+   opacity: 0.2;
+  }
+ }
+
+ .ant-input-number .ant-input-number-input {
   &::placeholder {
    color: #fff;
    opacity: 0.2;

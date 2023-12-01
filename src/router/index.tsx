@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy } from 'react';
 
 import AppLayout from '../layouts/AppLayout';
 
@@ -11,6 +12,8 @@ import CaseConverterPage from '../views/CaseConverterPage';
 import NoMatch from '../views/NoMatch';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
+
+const PrivacyPolicyPage = lazy(() => import('../views/PrivacyPolicyPage'));
 
 const routes = createBrowserRouter([
  {
@@ -53,7 +56,12 @@ const routes = createBrowserRouter([
     element: <UnixtimestampPage />,
     id: 'unixtimestamp',
    },
-   { path: "*", element: <NoMatch /> },
+   {
+    path: 'privacy-policy',
+    element: <PrivacyPolicyPage />,
+    id: 'privacy-policy',
+   },
+   { path: '*', element: <NoMatch /> },
   ],
  },
 ]);
