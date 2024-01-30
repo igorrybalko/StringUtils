@@ -25,7 +25,7 @@ export default function AppLayout() {
    <Footer>
     <div className='wrapper'>
      <div className='d-flex jc-sb'>
-      <div>&copy; 2023 String Utils</div>
+      <div>&copy; 2024 String Utils</div>
 
       <div>
        <Link to='/privacy-policy'>Privacy Policy</Link>
