@@ -158,7 +158,7 @@ export default function UnixtimestampPage() {
    <AppUtFullDate />
 
    <div>
-    <h3>Unix time stamp</h3>
+    <h2>Unix time stamp</h2>
 
     <p>
      The Unix timestamp is a system for tracking time in computing, representing

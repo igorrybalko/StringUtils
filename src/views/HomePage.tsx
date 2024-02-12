@@ -32,6 +32,10 @@ export default function HomePage() {
     url: '/unixtimestamp',
     title: 'Unix Timestamp',
    },
+   {
+    url: '/uuid',
+    title: 'UUID Generator',
+   },
  ];
 
  return (

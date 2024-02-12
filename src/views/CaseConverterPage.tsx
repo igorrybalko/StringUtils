@@ -121,7 +121,7 @@ export default function CaseConverterPage() {
       </Form.Item>
      </Form>
      <Divider />
-     <h2>Result:</h2>
+     <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
      <Button type='primary' onClick={copyText}>
       Copy

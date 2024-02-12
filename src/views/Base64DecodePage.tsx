@@ -105,13 +105,14 @@ export default function Base64DecodePage() {
       </Form.Item>
      </Form>
      <Divider />
-     <h2>Result:</h2>
+     <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
      <Button type='primary' onClick={copyText}>
       Copy
      </Button>
      <Divider />
      <div>
+      <h2>About Base64 Decoding</h2>
       <p>
        Decoding is done using the{' '}
        <a

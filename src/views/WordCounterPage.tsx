@@ -118,7 +118,7 @@ export default function WordCounterPage() {
     </Form.Item>
    </Form>
    <Divider />
-   <h2>Result:</h2>
+   <div className='caption'>Result:</div>
    <div className='mb-10'>All symbols: <Tag>{countAllSymbols}</Tag></div>
    <div className='mb-10'>Symbols without spaces: <Tag>{countWithoutSpace}</Tag></div>
    <div>Words: <Tag>{cntWords}</Tag></div>

@@ -105,14 +105,14 @@ export default function Base64EncodePage() {
       </Form.Item>
      </Form>
      <Divider />
-     <h2>Result:</h2>
+     <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
      <Button type='primary' onClick={copyText}>
       Copy
      </Button>
      <Divider />
      <div>
-      <h3>Encode a string to Base64 online</h3>
+      <h2>Encode a string to Base64 online</h2>
       <p>
        Encoding is done using the{' '}
        <a

@@ -281,7 +281,7 @@ export default function TranslitUrlPage() {
     </Form.Item>
    </Form>
    <Divider />
-   <h2>Result:</h2>
+   <div className='caption'>Result:</div>
    <div className='p-input mb-24'>{result}</div>
    <Button type='primary' onClick={copyText}>
     Copy

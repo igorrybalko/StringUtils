@@ -12,6 +12,7 @@ import CaseConverterPage from '../views/CaseConverterPage';
 import NoMatch from '../views/NoMatch';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
+import UuidPage from '../views/UuidPage';
 
 const PrivacyPolicyPage = lazy(() => import('../views/PrivacyPolicyPage'));
 
@@ -60,6 +61,11 @@ const routes = createBrowserRouter([
     path: 'privacy-policy',
     element: <PrivacyPolicyPage />,
     id: 'privacy-policy',
+   },
+   {
+    path: 'uuid',
+    element: <UuidPage />,
+    id: 'uuid',
    },
    { path: '*', element: <NoMatch /> },
   ],
