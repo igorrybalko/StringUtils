@@ -49,7 +49,14 @@ export default function Md5GeneratorPage() {
   <div>
    <Helmet>
     <title>MD5 Hash Generator Online</title>
-    <meta name='description' content='Online tool for generate MD5 hash' />
+    <meta
+     name='description'
+     content='Online tool for generate MD5 hash. Create MD5 for free'
+    />
+    <meta
+     name='keywords'
+     content='md5, hash, generator, create, string, encode, encrypt'
+    />
     <link
      rel='canonical'
      href={import.meta.env.VITE_SITE_URL + '/md5-generator'}

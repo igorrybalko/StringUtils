@@ -95,6 +95,10 @@ export default function UnixtimestampPage() {
      name='description'
      content='Online tool for developers to convert Unix timestamps'
     />
+    <meta
+     name='keywords'
+     content='unix, time, stamp, timestamp, epoch, conversion, converter, generator'
+    />
     <link
      rel='canonical'
      href={import.meta.env.VITE_SITE_URL + '/unixtimestamp'}

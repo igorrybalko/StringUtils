@@ -24,11 +24,11 @@ export default function WordCounterPage() {
  const [api, contextHolder] = notification.useNotification();
 
  const navList = [
-    {
-     title: 'Case Converter',
-     url: '/case-converter',
-    },
-   ];
+  {
+   title: 'Case Converter',
+   url: '/case-converter',
+  },
+ ];
 
  const countWords = (str: string) => {
   str = str.trim();
@@ -66,7 +66,7 @@ export default function WordCounterPage() {
   setCountAllSymbols(0);
   setCountWithoutSpace(0);
   setCntWords(0);
- }
+ };
 
  return (
   <div>
@@ -78,6 +78,7 @@ export default function WordCounterPage() {
      name='description'
      content='Calculate words and symbols in text online for free, including spaces and without'
     />
+    <meta name='keywords' content='count, characters, letters, online' />
     <link
      rel='canonical'
      href={import.meta.env.VITE_SITE_URL + '/word-counter'}
@@ -86,55 +87,63 @@ export default function WordCounterPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-   <h1>Character Count and Words Online Free</h1>
-   <Form
-    onFinish={onFinish}
-    autoComplete='off'
-    layout='vertical'
-    initialValues={{ trim: true }}
-   >
-    <Form.Item
-     name='text'
-     rules={[{ required: true, message: 'Please enter data' }]}
-    >
-     <TextArea
-      className='textarea-big'
-      placeholder='Paste your text...'
-      spellCheck='false'
-     />
-    </Form.Item>
+     <h1>Character Count and Words Online Free</h1>
+     <Form
+      onFinish={onFinish}
+      autoComplete='off'
+      layout='vertical'
+      initialValues={{ trim: true }}
+     >
+      <Form.Item
+       name='text'
+       rules={[{ required: true, message: 'Please enter data' }]}
+      >
+       <TextArea
+        className='textarea-big'
+        placeholder='Paste your text...'
+        spellCheck='false'
+       />
+      </Form.Item>
 
-    <Form.Item name='trim' valuePropName='checked'>
-     <Checkbox>Trim start and end spaces</Checkbox>
-    </Form.Item>
+      <Form.Item name='trim' valuePropName='checked'>
+       <Checkbox>Trim start and end spaces</Checkbox>
+      </Form.Item>
 
-    <Form.Item>
-     <Space>
-      <Button type='primary' htmlType='submit'>
-       Count
-      </Button>
-      <Button htmlType='reset' onClick={onReset}>Reset</Button>
-     </Space>
-    </Form.Item>
-   </Form>
-   <Divider />
-   <div className='caption'>Result:</div>
-   <div className='mb-10'>All symbols: <Tag>{countAllSymbols}</Tag></div>
-   <div className='mb-10'>Symbols without spaces: <Tag>{countWithoutSpace}</Tag></div>
-   <div>Words: <Tag>{cntWords}</Tag></div>
+      <Form.Item>
+       <Space>
+        <Button type='primary' htmlType='submit'>
+         Count
+        </Button>
+        <Button htmlType='reset' onClick={onReset}>
+         Reset
+        </Button>
+       </Space>
+      </Form.Item>
+     </Form>
+     <Divider />
+     <div className='caption'>Result:</div>
+     <div className='mb-10'>
+      All symbols: <Tag>{countAllSymbols}</Tag>
+     </div>
+     <div className='mb-10'>
+      Symbols without spaces: <Tag>{countWithoutSpace}</Tag>
+     </div>
+     <div>
+      Words: <Tag>{cntWords}</Tag>
+     </div>
 
-   <Divider />
-   <div>
-    Online character and word counting tools provide a convenient way to keep
-    track of the number of characters and words in a text. They are valuable for
-    students, writers, journalists, and marketers, helping them adhere to
-    character limits, both in social media and academic or professional
-    assignments. These tools make it easier to create precise texts and ensure
-    compliance with formatting rules and length constraints, which can be
-    particularly crucial in <strong>SEO</strong>, social media, and other fields where content
-    accuracy and optimization are essential.
-   </div>
-   </Col>
+     <Divider />
+     <div>
+      Online character and word counting tools provide a convenient way to keep
+      track of the number of characters and words in a text. They are valuable
+      for students, writers, journalists, and marketers, helping them adhere to
+      character limits, both in social media and academic or professional
+      assignments. These tools make it easier to create precise texts and ensure
+      compliance with formatting rules and length constraints, which can be
+      particularly crucial in <strong>SEO</strong>, social media, and other
+      fields where content accuracy and optimization are essential.
+     </div>
+    </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />
     </Col>
