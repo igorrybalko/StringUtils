@@ -70,7 +70,7 @@ export default function Base64EncodePage() {
  return (
   <div>
    <Helmet>
-    <title>Base64 Encode Online</title>
+    <title>Base64 Encode Online Tools</title>
     <meta name='description' content='Encode string to Base64 format online' />
     <link
      rel='canonical'

@@ -70,10 +70,10 @@ export default function CaseConverterPage() {
  return (
   <div>
    <Helmet>
-    <title>Case Converter Online</title>
+    <title>Case Converter Online Tools (Lowercase and Uppercase)</title>
     <meta
      name='description'
-     content='Online tool for convert string to uppercase, lowercase and capitalize words'
+     content='Online tool for convert string to uppercase, lowercase and capitalize words. Сaps lock online'
     />
     <link
      rel='canonical'
@@ -83,7 +83,7 @@ export default function CaseConverterPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>Case Converter</h1>
+     <h1>Case Converter Online</h1>
      <Form
       onFinish={onFinish}
       autoComplete='off'

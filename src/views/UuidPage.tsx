@@ -35,7 +35,7 @@ export default function UuidPage() {
  return (
   <div>
    <Helmet>
-    <title>Online UUID Generator (Version 4)</title>
+    <title>Online UUID Generator (Version 4) free</title>
     <meta
      name='description'
      content='Online tool for random generate UUID (Universally Unique Identifier) - version 4'

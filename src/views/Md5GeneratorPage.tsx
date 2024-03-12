@@ -48,7 +48,7 @@ export default function Md5GeneratorPage() {
  return (
   <div>
    <Helmet>
-    <title>MD5 Hash Generator Online</title>
+    <title>MD5 Hash Generator Online Tools</title>
     <meta
      name='description'
      content='Online tool for generate MD5 hash. Create MD5 for free'
@@ -65,7 +65,7 @@ export default function Md5GeneratorPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>MD5 Hash Generator</h1>
+     <h1>MD5 Hash Generator Online</h1>
      <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
       <Form.Item
        name='text'

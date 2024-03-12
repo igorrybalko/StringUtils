@@ -249,7 +249,7 @@ export default function TranslitUrlPage() {
  return (
   <div>
    <Helmet>
-    <title>Translit URL online</title>
+    <title>Translit URL Online Tools</title>
     <meta
      name='description'
      content='Transliterating Cyrillic URLs to Latin characters using an online service is invaluable for optimizing web visibility. Free online tool'
@@ -260,7 +260,7 @@ export default function TranslitUrlPage() {
     />
    </Helmet>
    {contextHolder}
-   <h1>Translit URL</h1>
+   <h1>Translit URL Online</h1>
    <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
     <Form.Item
      name='text'

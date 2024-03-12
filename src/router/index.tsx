@@ -3,18 +3,19 @@ import { lazy } from 'react';
 
 import AppLayout from '../layouts/AppLayout';
 
-import HomePage from '../views/HomePage';
+import HomePage from '../views/common/HomePage';
 import Base64EncodePage from '../views/Base64EncodePage';
 import Base64DecodePage from '../views/Base64DecodePage';
 import Md5GeneratorPage from '../views/Md5GeneratorPage';
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
-import NoMatch from '../views/NoMatch';
+import NoMatch from '../views/common/NoMatch';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
 import UuidPage from '../views/UuidPage';
+import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
 
-const PrivacyPolicyPage = lazy(() => import('../views/PrivacyPolicyPage'));
+const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
 
 const routes = createBrowserRouter([
  {
@@ -66,6 +67,11 @@ const routes = createBrowserRouter([
     path: 'uuid',
     element: <UuidPage />,
     id: 'uuid',
+   },
+   {
+    path: 'json-stringify',
+    element: <JsonStringifyTextPage />,
+    id: 'json-stringify',
    },
    { path: '*', element: <NoMatch /> },
   ],
