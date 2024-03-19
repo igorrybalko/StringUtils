@@ -1,8 +1,11 @@
 import { Col, Row, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useLoadPage } from '../../hooks';
 
 export default function HomePage() {
+ useLoadPage();
+
  const list = [
   {
    url: '/base64-encode',

@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../components/AppSidebar';
+import { useLoadPage } from '../hooks';
 
 const { TextArea } = Input;
 
@@ -22,6 +23,8 @@ export default function WordCounterPage() {
  const [countWithoutSpace, setCountWithoutSpace] = useState(0);
  const [cntWords, setCntWords] = useState(0);
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const navList = [
   {

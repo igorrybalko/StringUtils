@@ -3,6 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { Suspense } from 'react';
 
 import AppHeader from '../components/AppHeader';
+import SuShare from '../components/SuShare';
 import { useAppSelector } from '../hooks';
 
 const { Footer, Content } = Layout;
@@ -21,6 +22,9 @@ export default function AppLayout() {
       </Suspense>
      </div>
     </Content>
+    <div className='wrapper'>
+     <SuShare />
+    </div>
    </div>
    <Footer>
     <div className='wrapper'>

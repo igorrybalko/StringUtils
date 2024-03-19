@@ -12,11 +12,15 @@ import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
+import { useLoadPage } from '../hooks';
+
 const { TextArea } = Input;
 
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const onFinish = (val: { text: string }) => {
   const str = JSON.stringify(val.text);

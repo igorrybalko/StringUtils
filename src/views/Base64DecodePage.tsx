@@ -13,12 +13,15 @@ import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../components/AppSidebar';
+import { useLoadPage } from '../hooks';
 
 const { TextArea } = Input;
 
 export default function Base64DecodePage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const navList = [
   {
@@ -67,7 +70,7 @@ export default function Base64DecodePage() {
  return (
   <div>
    <Helmet>
-    <title>Base64 Decode Online Tools</title>
+    <title>Base64 Decode Online Tools - Free</title>
     <meta
      name='description'
      content='A Base64 decoding service is a convenient online tool that swiftly converts Base64-encoded data back to its original format'
@@ -80,7 +83,7 @@ export default function Base64DecodePage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>Base64 Decode Online</h1>
+     <h1>Base64 Decode Online (Text)</h1>
      <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
       <Form.Item
        name='text'

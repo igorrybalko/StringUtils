@@ -13,9 +13,13 @@ import copy from 'copy-to-clipboard';
 import chunk from 'lodash.chunk';
 import { Helmet } from 'react-helmet';
 
+import { useLoadPage } from '../hooks';
+
 export default function TranslitUrlPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const columns = [
   {

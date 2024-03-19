@@ -4,10 +4,13 @@ import { Button, notification, Divider, Row, Col } from 'antd';
 import copy from 'copy-to-clipboard';
 
 import AppSidebar from '../components/AppSidebar';
+import { useLoadPage } from '../hooks';
 
 export default function UuidPage() {
  const [uuid, setUuid] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const navList = [
   {

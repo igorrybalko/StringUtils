@@ -14,6 +14,7 @@ import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppUtFullDate from '../components/AppUtFullDate';
+import { useLoadPage } from '../hooks';
 
 type DataType = {
  key: number;
@@ -26,6 +27,8 @@ export default function UnixtimestampPage() {
  const [currentTime, setCurrentTime] = useState<number>();
  const [placeholder, setPlaceholder] = useState('');
  const [dataSource, setDataSource] = useState<DataType[]>([]);
+
+ useLoadPage();
 
  const columns = [
   {

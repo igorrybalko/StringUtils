@@ -13,12 +13,15 @@ import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../components/AppSidebar';
+import { useLoadPage } from '../hooks';
 
 const { TextArea } = Input;
 
 export default function Base64EncodePage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+
+ useLoadPage();
 
  const navList = [
   {
@@ -70,8 +73,8 @@ export default function Base64EncodePage() {
  return (
   <div>
    <Helmet>
-    <title>Base64 Encode Online Tools</title>
-    <meta name='description' content='Encode string to Base64 format online' />
+    <title>Base64 Encode Online Tools - Free</title>
+    <meta name='description' content='Encode string (text) to Base64 format online - free' />
     <link
      rel='canonical'
      href={import.meta.env.VITE_SITE_URL + '/base64-encode'}
@@ -80,7 +83,7 @@ export default function Base64EncodePage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>Base64 Encode</h1>
+     <h1>Base64 Encode Online (Text)</h1>
      <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
       <Form.Item
        name='text'

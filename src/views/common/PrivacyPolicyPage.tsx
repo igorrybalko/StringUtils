@@ -1,6 +1,10 @@
 import { Helmet } from 'react-helmet';
 
+import { useLoadPage } from '../../hooks';
+
 export default function PrivacyPolicyPage() {
+ useLoadPage();
+
  return (
   <div>
    <Helmet>
