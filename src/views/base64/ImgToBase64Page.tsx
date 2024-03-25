@@ -1,23 +1,28 @@
 import {
  Button,
  Form,
- Input,
  Divider,
  notification,
  Space,
  Col,
  Row,
+ Upload,
+ Select,
 } from 'antd';
+
+import type { UploadFile } from 'antd';
+
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
+import { UploadOutlined } from '@ant-design/icons';
 
-import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../../components/AppSidebar';
+import { useLoadPage } from '../../hooks';
 
-const { TextArea } = Input;
+const { Option } = Select;
 
-export default function Base64EncodePage() {
+export default function ImgToBase64Page() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
 
@@ -25,35 +30,30 @@ export default function Base64EncodePage() {
 
  const navList = [
   {
+   title: 'Base64 Encode',
+   url: '/base64-encode',
+  },
+  {
    title: 'Base64 Decode',
    url: '/base64-decode',
   },
  ];
 
- function b64EncodeUnicode(str: string) {
-  // first we use encodeURIComponent to get percent-encoded UTF-8,
-  // then we convert the percent encodings into raw bytes which
-  // can be fed into btoa.
-  return btoa(
-   encodeURIComponent(str).replace(
-    /%([0-9A-F]{2})/g,
-    function toSolidBytes(_match, p1) {
-     return String.fromCharCode(parseInt('0x' + p1, 16));
-    }
-   )
-  );
- }
+ const onFinish = (val: { upload: UploadFile[] }) => {
+  if (val.upload) {
+   try {
+    const str = val.upload[0].thumbUrl;
 
- const onFinish = (val: { text: string }) => {
-  try {
-   const str = b64EncodeUnicode(val.text);
-   setResult(str);
-  } catch (err) {
-   console.log(err);
-   api.error({
-    message: 'Error',
-    description: 'invalid text',
-   });
+    if (str) {
+     setResult(str);
+    }
+   } catch (err) {
+    console.log(err);
+    api.error({
+     message: 'Error',
+     description: '',
+    });
+   }
   }
  };
 
@@ -70,36 +70,67 @@ export default function Base64EncodePage() {
   setResult('');
  };
 
+ const normFile = (e: any) => {
+  if (Array.isArray(e)) {
+   return e;
+  }
+  return e?.fileList;
+ };
+
  return (
   <div>
    <Helmet>
     <title>Base64 Encode Online Tools - Free</title>
-    <meta name='description' content='Encode string (text) to Base64 format online - free' />
+    <meta
+     name='description'
+     content='Encode string to Base64 format online - free. Convert text to Base64'
+    />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/base64-encode'}
+     href={import.meta.env.VITE_SITE_URL + '/img-to-base64'}
     />
    </Helmet>
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
      <h1>Base64 Encode Online (Text)</h1>
-     <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
+     <Form
+      onFinish={onFinish}
+      autoComplete='off'
+      layout='vertical'
+      initialValues={{ format: 'simple' }}
+     >
       <Form.Item
-       name='text'
-       rules={[{ required: true, message: 'Please enter data' }]}
+       name='upload'
+       label='Upload'
+       valuePropName='fileList'
+       getValueFromEvent={normFile}
       >
-       <TextArea
-        spellCheck='false'
-        className='textarea'
-        placeholder='Type your text...'
-       />
+       <Upload
+        name='img'
+        listType='picture'
+        maxCount={1}
+        accept='image/png, image/jpeg'
+        beforeUpload={() => {
+         /* update state here */
+         return false;
+        }}
+       >
+        <Button icon={<UploadOutlined />}>Click to upload</Button>
+       </Upload>
+      </Form.Item>
+
+      <Form.Item name='format' label='Output Format'>
+       <Select placeholder='Please select a country'>
+        <Option value='simple'>Only Base64</Option>
+        <Option value='dataUri'>Data URI</Option>
+       </Select>
       </Form.Item>
 
       <Form.Item>
        <Space>
         <Button type='primary' htmlType='submit'>
-         Encode
+         Encode image to Base64
         </Button>
         <Button htmlType='reset' onClick={onReset}>
          Reset

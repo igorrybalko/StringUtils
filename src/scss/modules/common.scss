@@ -20,6 +20,9 @@ main {
 .p-textarea {
  min-height: 120px;
  padding: 7px 11px;
+ word-break: break-word;
+ overflow: auto;
+ max-height: 330px;
 }
 
 .p-input {

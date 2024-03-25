@@ -4,8 +4,9 @@ import { lazy } from 'react';
 import AppLayout from '../layouts/AppLayout';
 
 import HomePage from '../views/common/HomePage';
-import Base64EncodePage from '../views/Base64EncodePage';
-import Base64DecodePage from '../views/Base64DecodePage';
+import Base64EncodePage from '../views/base64/Base64EncodePage';
+import Base64DecodePage from '../views/base64/Base64DecodePage';
+import ImgToBase64Page from '../views/base64/ImgToBase64Page';
 import Md5GeneratorPage from '../views/Md5GeneratorPage';
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
@@ -32,6 +33,11 @@ const routes = createBrowserRouter([
     path: 'base64-decode',
     element: <Base64DecodePage />,
     id: 'base64-decode',
+   },
+   {
+    path: 'img-to-base64',
+    element: <ImgToBase64Page />,
+    id: 'img-to-base64',
    },
    {
     path: 'md5-generator',

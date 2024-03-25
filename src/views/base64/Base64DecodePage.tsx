@@ -12,8 +12,8 @@ import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
-import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../../components/AppSidebar';
+import { useLoadPage } from '../../hooks';
 
 const { TextArea } = Input;
 
@@ -27,6 +27,10 @@ export default function Base64DecodePage() {
   {
    title: 'Base64 Encode',
    url: '/base64-encode',
+  },
+  {
+   title: 'Image to Base64',
+   url: '/img-to-base64',
   },
  ];
 
@@ -88,10 +92,11 @@ export default function Base64DecodePage() {
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter Base64'
       >
        <TextArea
         className='textarea'
-        placeholder='Type your text...'
+        placeholder='Type your Base64...'
         spellCheck='false'
        />
       </Form.Item>
