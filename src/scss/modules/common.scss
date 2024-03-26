@@ -22,7 +22,7 @@ main {
  padding: 7px 11px;
  word-break: break-word;
  overflow: auto;
- max-height: 330px;
+ max-height: 320px;
 }
 
 .p-input {
@@ -146,4 +146,8 @@ html {
 img {
   max-width: 100%;
   height: auto;
+}
+
+li {
+  margin-bottom: 10px;
 }
