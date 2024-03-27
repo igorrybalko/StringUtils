@@ -4,6 +4,7 @@
   color: #fff;
  }
 
+ .ant-upload-list-item-name,
  .ant-radio-wrapper,
  .ant-checkbox-wrapper,
  .ant-tag,
@@ -83,5 +84,11 @@
    .ant-table-row-expand-icon-cell
   ):not([colspan])::before {
   background-color: #303030;
+ }
+
+ .ant-upload-list-item-actions{
+  path{
+    fill: #fff;
+  }
  }
 }
