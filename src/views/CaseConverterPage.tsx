@@ -18,6 +18,16 @@ import { useLoadPage } from '../hooks';
 
 const { TextArea } = Input;
 
+function convertToSentence(str: string) {
+ return str
+  .toLowerCase()
+  .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (s) => s.toUpperCase());
+}
+
+function convertToTitleCase(str: string) {
+ return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
+}
+
 export default function CaseConverterPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
@@ -31,7 +41,7 @@ export default function CaseConverterPage() {
   },
  ];
 
- type ConvertOption = 'lc' | 'uc' | 'cc';
+ type ConvertOption = 'lc' | 'uc' | 'cc' | 'sc';
 
  const onFinish = (val: { text: string; option: ConvertOption }) => {
   const actions = {
@@ -39,6 +49,7 @@ export default function CaseConverterPage() {
 
    uc: () => val.text.toUpperCase(),
    cc: () => convertToTitleCase(val.text),
+   sc: () => convertToSentence(val.text),
   };
 
   try {
@@ -62,10 +73,6 @@ export default function CaseConverterPage() {
   }
  }
 
- function convertToTitleCase(str: string) {
-  return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
- }
-
  const onReset = () => {
   setResult('');
  };
@@ -76,7 +83,7 @@ export default function CaseConverterPage() {
     <title>Case Converter Online Tools (Lowercase and Uppercase)</title>
     <meta
      name='description'
-     content='Online tool for convert string to uppercase, lowercase and capitalize words. Сaps lock online'
+     content='Online tool for convert string to uppercase, lowercase, capitalize words, sentence case. Сaps lock online'
     />
     <link
      rel='canonical'
@@ -106,9 +113,10 @@ export default function CaseConverterPage() {
 
       <Form.Item name='option'>
        <Radio.Group>
-        <Radio value={'lc'}>lower case</Radio>
-        <Radio value={'uc'}>UPPER CASE</Radio>
+        <Radio value={'lc'}>lowercase</Radio>
+        <Radio value={'uc'}>UPPERCASE</Radio>
         <Radio value={'cc'}>Capitalized Case</Radio>
+        <Radio value={'sc'}>Sentence case</Radio>
        </Radio.Group>
       </Form.Item>
 
@@ -131,17 +139,26 @@ export default function CaseConverterPage() {
      </Button>
      <Divider />
      <div>
-      Online tools for text case modification, allowing users to convert text to{' '}
-      <strong>uppercase</strong>, <strong>lowercase</strong>, or{' '}
-      <strong>capitalize</strong> words, are valuable for a variety of purposes.
-      Writers and editors can utilize these tools to ensure consistent
-      formatting and style in their documents. Content creators and social media
-      managers may find them handy for crafting eye-catching headlines or
-      captions. Additionally, programmers and developers can streamline their
-      coding practices by easily adjusting the case of variables and
-      identifiers. Overall, these online tools serve as versatile aids for
-      anyone seeking efficient and uniform text transformation, enhancing
-      readability and professionalism across different contexts.
+      <p>
+       Online tools for text case modification, allowing users to convert text
+       to <strong>uppercase</strong>, <strong>lowercase</strong>, or{' '}
+       <strong>capitalize</strong> words, are valuable for a variety of
+       purposes. Writers and editors can utilize these tools to ensure
+       consistent formatting and style in their documents. Content creators and
+       social media managers may find them handy for crafting eye-catching
+       headlines or captions. Additionally, programmers and developers can
+       streamline their coding practices by easily adjusting the case of
+       variables and identifiers. Overall, these online tools serve as versatile
+       aids for anyone seeking efficient and uniform text transformation,
+       enhancing readability and professionalism across different contexts.
+      </p>
+      <h3>Case converter examples</h3>
+      <ul>
+        <li><strong>Lowercase:</strong> all letters in lowercase</li>
+        <li><strong>Uppercase:</strong> ALL LETTERS IN LOWERCASE</li>
+        <li><strong>Capitalized case:</strong> Every First Letter In A Word Is Set To Uppercase</li>
+        <li><strong>Sentence case:</strong> Every first letter in a sentence is set to uppercase</li>
+      </ul>
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>

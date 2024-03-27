@@ -53,6 +53,7 @@ html {
  justify-content: space-between;
 }
 
+li,
 .mb-10 {
  margin-bottom: 10px;
 }
@@ -148,6 +149,6 @@ img {
   height: auto;
 }
 
-li {
-  margin-bottom: 10px;
+.ant-radio-wrapper{
+  margin-bottom: 5px;
 }
