@@ -1,6 +1,6 @@
 .wrapper {
  margin: 0 auto;
- max-width: 1240px;
+ max-width: 1260px;
  padding: 0 20px;
 }
 
@@ -67,7 +67,7 @@ li,
 }
 
 .mr-10 {
-  margin-right: 10px;
+ margin-right: 10px;
 }
 
 .ant-layout-footer {
@@ -115,6 +115,10 @@ li,
  justify-content: space-between;
 }
 
+.d-block {
+  display: block;
+}
+
 .header-inner {
  justify-content: space-between;
 }
@@ -145,10 +149,14 @@ li,
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+ max-width: 100%;
+ height: auto;
 }
 
-.ant-radio-wrapper{
-  margin-bottom: 5px;
+.ant-radio-wrapper {
+ margin-bottom: 5px;
+}
+
+.hidden {
+ display: none !important;
 }

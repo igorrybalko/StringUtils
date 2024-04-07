@@ -16,9 +16,9 @@ export default function HomePage() {
    title: 'Base64 Decode',
   },
   {
-    url: '/img-to-base64',
-    title: 'Image to Base64',
-   },
+   url: '/img-to-base64',
+   title: 'Image to Base64',
+  },
   {
    url: '/md5-generator',
    title: 'MD5 Hash Generator',
@@ -46,6 +46,10 @@ export default function HomePage() {
   {
    url: '/json-stringify',
    title: 'JSON Stringify',
+  },
+  {
+   url: '/html-formatter',
+   title: 'HTML Formatter',
   },
  ];
 

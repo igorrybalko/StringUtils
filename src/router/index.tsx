@@ -17,6 +17,7 @@ import UuidPage from '../views/UuidPage';
 import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
 
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
+const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
 
 const routes = createBrowserRouter([
  {
@@ -78,6 +79,11 @@ const routes = createBrowserRouter([
     path: 'json-stringify',
     element: <JsonStringifyTextPage />,
     id: 'json-stringify',
+   },
+   {
+    path: 'html-formatter',
+    element: <FormatterHtmlPage />,
+    id: 'html-formatter',
    },
    { path: '*', element: <NoMatch /> },
   ],
