@@ -25,16 +25,24 @@ export default function FormatterHtmlPage() {
  const onFinish = (val: { text: string; tabSize: number }) => {
   try {
    if (val.text?.length) {
-    let txt = prettify(val.text, {
-     tab_size: val.tabSize,
-    });
-    setEditorValue(val.text);
+    const html = val.text.trim();
+    let str = html;
 
-    const doctype = txt.slice(0, 15).toLowerCase();
+    const doctype = html.slice(0, 15).toLowerCase();
 
     if (doctype === '<!doctype html>') {
-     console.log(doctype);
+     str = html.slice(15);
     }
+
+    let txt = prettify(str, {
+     tab_size: val.tabSize,
+    });
+
+    if (doctype === '<!doctype html>') {
+     txt = `<!DOCTYPE html>\n${txt}`;
+    }
+
+    setEditorValue(val.text);
 
     setResult(txt);
    }
@@ -70,10 +78,10 @@ export default function FormatterHtmlPage() {
  return (
   <div>
    <Helmet>
-    <title>HTML Formatter</title>
+    <title>HTML Formatter Online Free | HTML Beautifier</title>
     <meta
      name='description'
-     content='Online tool for convert string to uppercase, lowercase, capitalize words, sentence case. Сaps lock online'
+     content='Online tool for formatting HTML in the editor for free. Easy to use'
     />
     <link
      rel='canonical'
@@ -123,7 +131,7 @@ export default function FormatterHtmlPage() {
        Convert
       </Button>
       <Button htmlType='reset' onClick={onReset}>
-       Reset
+       Reset all
       </Button>
      </Space>
     </Form.Item>
@@ -145,6 +153,13 @@ export default function FormatterHtmlPage() {
    <Button type='primary' onClick={copyText}>
     Copy
    </Button>
+   <Divider />
+   <h2>HTML Beautifier</h2>
+   <div>
+    HTML Formatter tool online free. Formatting occurs in the browser. HTML code
+    is displayed in the editor. You can adjust the indentation. The tool is
+    useful for web developers, copywriters and website administrators.
+   </div>
   </div>
  );
 }

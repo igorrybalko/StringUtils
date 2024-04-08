@@ -77,11 +77,12 @@ export default function HomePage() {
    <Divider />
    <div className='info-text'>
     <p>
+     This service is useful for web developers, SEO optimizers and copywriters.
      The service allows you to manipulate text and strings online for free. It
      is possible to encode and decode in <strong>Base64</strong>, convert
      strings to upper and lower case. You can generate hash in{' '}
      <strong>md5</strong>, generate <strong>UUID</strong> (Version 4), convert
-     text to json string using JSON.stringify.
+     text to json string using JSON.stringify, format <strong>HTML</strong>
     </p>
     <p>
      It is also possible to convert Cyrillic to Latin for <strong>SEF</strong>{' '}
