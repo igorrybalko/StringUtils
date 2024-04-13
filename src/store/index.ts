@@ -8,14 +8,18 @@ import {
  PERSIST,
  PURGE,
  REGISTER,
+ createMigrate,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import common from './slices/common';
+import migrations from './migrations';
 
 const persistConfig = {
  key: 'root',
  storage,
+ version: 1,
+ migrate: createMigrate(migrations, { debug: false }),
 };
 
 const rootReducer = combineReducers({
@@ -29,7 +33,15 @@ export const store = configureStore({
  middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
    serializableCheck: {
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    ignoredActions: [
+     FLUSH,
+     REHYDRATE,
+     PAUSE,
+     PERSIST,
+     PURGE,
+     REGISTER,
+     'common/getStingByUrl/rejected',
+    ],
    },
   }),
 });

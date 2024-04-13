@@ -1,4 +1,14 @@
-import { Button, Form, Input, Divider, notification, Space, Radio } from 'antd';
+import {
+ Button,
+ Form,
+ Input,
+ Divider,
+ notification,
+ Space,
+ Radio,
+ Row,
+ Col,
+} from 'antd';
 import { Helmet } from 'react-helmet';
 import { useState, useRef } from 'react';
 import { prettify } from 'htmlfy';
@@ -9,7 +19,9 @@ import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
-import { useLoadPage } from '../../hooks';
+import { useLoadPage, useAppDispatch } from '../../hooks';
+
+import { getStingByUrl } from '../../store/slices/common';
 
 export default function FormatterHtmlPage() {
  useLoadPage();
@@ -17,8 +29,12 @@ export default function FormatterHtmlPage() {
  const [result, setResult] = useState('');
  const [editorValue, setEditorValue] = useState('');
  const [resetKey, setResetKey] = useState(0);
+ const [url, setUrl] = useState('');
+ const [loading, setLoading] = useState(false);
+
  const [api, contextHolder] = notification.useNotification();
  const [form] = Form.useForm();
+ const dispatch = useAppDispatch();
 
  const editorRef = useRef(null);
 
@@ -49,7 +65,7 @@ export default function FormatterHtmlPage() {
   } catch (err) {
    api.error({
     message: 'Error',
-    description: 'invalid data',
+    description: 'Invalid data',
    });
   }
  };
@@ -58,6 +74,7 @@ export default function FormatterHtmlPage() {
   setResult('');
   setEditorValue('');
   setResetKey((val) => (val += 1));
+  setUrl('');
  };
 
  function copyText() {
@@ -73,6 +90,35 @@ export default function FormatterHtmlPage() {
   form.setFieldsValue({
    text: newValue,
   });
+ }
+
+ function loadUrl() {
+  const trimUrl = url.trim();
+  if (trimUrl) {
+   if (trimUrl.startsWith('https://')) {
+    setLoading(true);
+
+    dispatch(getStingByUrl(url))
+     .unwrap()
+     .then((res) => {
+      setEditorValue(res.content);
+      form.setFieldsValue({
+       text: res.content,
+      });
+     })
+     .finally(() => {
+      setTimeout(() => {
+       setLoading(false);
+      }, 500);
+     })
+     .catch(() => {});
+   }else{
+    api.error({
+      message: 'Error',
+      description: 'URL should start with "https://"',
+     });
+   }
+  }
  }
 
  return (
@@ -118,6 +164,24 @@ export default function FormatterHtmlPage() {
      />
     </div>
 
+    <Row gutter={[12, 0]}>
+     <Col xs={24} sm={24} md={12}>
+      <div className='mb-24'>
+       <label className='mb-10 d-block'>Load URL</label>
+       <Space.Compact style={{ width: '100%' }}>
+        <Input
+         placeholder='https://'
+         value={url}
+         onChange={(e) => setUrl(e.target.value)}
+        />
+        <Button type='primary' onClick={loadUrl} loading={loading}>
+         Load
+        </Button>
+       </Space.Compact>
+      </div>
+     </Col>
+    </Row>
+
     <Form.Item name='tabSize' label='Tab size'>
      <Radio.Group>
       <Radio value={2}>2</Radio>
@@ -128,7 +192,7 @@ export default function FormatterHtmlPage() {
     <Form.Item>
      <Space>
       <Button type='primary' htmlType='submit'>
-       Convert
+       Format
       </Button>
       <Button htmlType='reset' onClick={onReset}>
        Reset all

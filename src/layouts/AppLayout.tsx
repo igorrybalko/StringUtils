@@ -4,6 +4,8 @@ import { Suspense } from 'react';
 
 import AppHeader from '../components/AppHeader';
 import SuShare from '../components/SuShare';
+import AppNotif from '../components/AppNotif';
+
 import { useAppSelector } from '../hooks';
 
 const { Footer, Content } = Layout;
@@ -37,6 +39,7 @@ export default function AppLayout() {
      </div>
     </div>
    </Footer>
+   <AppNotif />
   </Layout>
  );
 }

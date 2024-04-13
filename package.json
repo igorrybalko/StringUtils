@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^2.1.0",
     "ace-builds": "^1.32.9",
     "antd": "^5.14.0",
+    "axios": "^1.6.8",
     "copy-to-clipboard": "^3.3.3",
     "htmlfy": "^0.2.1",
     "lodash.chunk": "^4.2.0",
