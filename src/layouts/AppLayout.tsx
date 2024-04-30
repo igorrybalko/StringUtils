@@ -38,8 +38,8 @@ export default function AppLayout() {
       </div>
      </div>
     </div>
+    <AppNotif />
    </Footer>
-   <AppNotif />
   </Layout>
  );
 }
