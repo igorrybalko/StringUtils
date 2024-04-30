@@ -76,6 +76,7 @@ export default function HomePage() {
    </Row>
    <Divider />
    <div className='info-text'>
+    <h2>About Web Tools</h2>
     <p>
      This service is useful for web developers, SEO optimizers and copywriters.
      The service allows you to manipulate text and strings online for free. It
