@@ -1,14 +1,14 @@
 import { Layout } from 'antd';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 
 import AppHeader from '../components/AppHeader';
+import AppFooter from '../components/AppFooter';
 import SuShare from '../components/SuShare';
-import AppNotif from '../components/AppNotif';
 
 import { useAppSelector } from '../hooks';
 
-const { Footer, Content } = Layout;
+const { Content } = Layout;
 
 export default function AppLayout() {
  const darkTheme = useAppSelector((state) => state.common.darkTheme);
@@ -28,18 +28,7 @@ export default function AppLayout() {
      <SuShare />
     </div>
    </div>
-   <Footer>
-    <div className='wrapper'>
-     <div className='d-flex jc-sb'>
-      <div>&copy; 2024 String Utils</div>
-
-      <div>
-       <Link to='/privacy-policy'>Privacy Policy</Link>
-      </div>
-     </div>
-    </div>
-    <AppNotif />
-   </Footer>
+   <AppFooter />
   </Layout>
  );
 }
