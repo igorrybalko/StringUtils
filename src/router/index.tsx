@@ -10,14 +10,16 @@ import ImgToBase64Page from '../views/base64/ImgToBase64Page';
 import Md5GeneratorPage from '../views/Md5GeneratorPage';
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
-import NoMatch from '../views/common/NoMatch';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
 import UuidPage from '../views/UuidPage';
 import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
 
+const NoMatch = lazy(() => import('../views/common/NoMatch'));
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
 const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
+const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
+
 
 const routes = createBrowserRouter([
  {
@@ -84,6 +86,11 @@ const routes = createBrowserRouter([
     path: 'html-formatter',
     element: <FormatterHtmlPage />,
     id: 'html-formatter',
+   },
+   {
+    path: 'minify-css',
+    element: <MinifyCssPage />,
+    id: 'minify-css',
    },
    { path: '*', element: <NoMatch /> },
   ],

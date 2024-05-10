@@ -1,57 +1,12 @@
 import { Col, Row, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+
 import { useLoadPage } from '../../hooks';
+import list from '../../config/home-menu';
 
 export default function HomePage() {
  useLoadPage();
-
- const list = [
-  {
-   url: '/base64-encode',
-   title: 'Base64 Encode',
-  },
-  {
-   url: '/base64-decode',
-   title: 'Base64 Decode',
-  },
-  {
-   url: '/img-to-base64',
-   title: 'Image to Base64',
-  },
-  {
-   url: '/md5-generator',
-   title: 'MD5 Hash Generator',
-  },
-  {
-   url: '/translit-url',
-   title: 'Translit URL',
-  },
-  {
-   url: '/case-converter',
-   title: 'Case Converter',
-  },
-  {
-   url: '/word-counter',
-   title: 'Word/Character Counter',
-  },
-  {
-   url: '/unixtimestamp',
-   title: 'Unix Timestamp',
-  },
-  {
-   url: '/uuid',
-   title: 'UUID Generator',
-  },
-  {
-   url: '/json-stringify',
-   title: 'JSON Stringify',
-  },
-  {
-   url: '/html-formatter',
-   title: 'HTML Formatter',
-  },
- ];
 
  return (
   <div>
@@ -83,7 +38,8 @@ export default function HomePage() {
      is possible to encode and decode in <strong>Base64</strong>, convert
      strings to upper and lower case. You can generate hash in{' '}
      <strong>md5</strong>, generate <strong>UUID</strong> (Version 4), convert
-     text to json string using JSON.stringify, format <strong>HTML</strong>
+     text to json string using JSON.stringify, format <strong>HTML</strong>,
+     minify (compress) <strong>CSS</strong>
     </p>
     <p>
      It is also possible to convert Cyrillic to Latin for <strong>SEF</strong>{' '}

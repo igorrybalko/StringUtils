@@ -5,17 +5,16 @@ import {
  Divider,
  notification,
  Space,
- Radio,
  Row,
  Col,
 } from 'antd';
 import { Helmet } from 'react-helmet';
 import { useState, useRef } from 'react';
-import { prettify } from 'htmlfy';
+import { minify } from 'csso';
 import AceEditor from 'react-ace';
 import copy from 'copy-to-clipboard';
 
-import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-css';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
@@ -25,12 +24,12 @@ import { getStingByUrl } from '../../store/slices/common';
 
 const navList = [
  {
-  title: 'Minify CSS',
-  url: '/minify-css',
+  title: 'HTML Formatter',
+  url: '/html-formatter',
  },
 ];
 
-export default function FormatterHtmlPage() {
+export default function MinifyCssPage() {
  useLoadPage();
 
  const [result, setResult] = useState('');
@@ -45,31 +44,19 @@ export default function FormatterHtmlPage() {
 
  const editorRef = useRef(null);
 
- const onFinish = (val: { text: string; tabSize: number }) => {
+ const onFinish = (val: { text: string }) => {
   try {
    if (val.text?.length) {
-    const html = val.text.trim();
-    let str = html;
+    const str = val.text.trim();
 
-    const doctype = html.slice(0, 15).toLowerCase();
-
-    if (doctype === '<!doctype html>') {
-     str = html.slice(15);
-    }
-
-    let txt = prettify(str, {
-     tab_size: val.tabSize,
-    });
-
-    if (doctype === '<!doctype html>') {
-     txt = `<!DOCTYPE html>\n${txt}`;
-    }
+    let result = minify(str);
 
     setEditorValue(val.text);
 
-    setResult(txt);
+    setResult(result.css);
    }
   } catch (err) {
+   console.log(err);
    api.error({
     message: 'Error',
     description: 'Invalid data',
@@ -102,65 +89,69 @@ export default function FormatterHtmlPage() {
  function loadUrl() {
   const trimUrl = url.trim();
   if (trimUrl) {
-   if (trimUrl.startsWith('https://')) {
-    setLoading(true);
+   const notHttps = !trimUrl.startsWith('https://');
+   const notCss = !trimUrl.includes('.css');
 
-    dispatch(getStingByUrl(url))
-     .unwrap()
-     .then((res) => {
-      setEditorValue(res.content);
-      form.setFieldsValue({
-       text: res.content,
-      });
-     })
-     .finally(() => {
-      setTimeout(() => {
-       setLoading(false);
-      }, 500);
-     })
-     .catch(() => {});
-   } else {
+   if (notHttps || notCss) {
+    const httpsTxt = 'URL should start with "https://"';
+    const cssTxt = 'URL should contain ".сss"';
+
+    const description = notHttps ? httpsTxt : cssTxt;
+
     api.error({
      message: 'Error',
-     description: 'URL should start with "https://"',
+     description,
     });
+
+    return;
    }
+
+   setLoading(true);
+
+   dispatch(getStingByUrl(url))
+    .unwrap()
+    .then((res) => {
+     setEditorValue(res.content);
+     form.setFieldsValue({
+      text: res.content,
+     });
+    })
+    .finally(() => {
+     setTimeout(() => {
+      setLoading(false);
+     }, 500);
+    })
+    .catch(() => {});
   }
  }
 
  return (
   <div>
    <Helmet>
-    <title>HTML Formatter Online Free | HTML Beautifier</title>
+    <title>Minify CSS Online Free | CSS Compressor</title>
     <meta
      name='description'
-     content='Online tool for formatting HTML in the editor for free. Easy to use'
+     content='Free online tool for minifying (compressing) CSS in the browser'
     />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/formatter-html'}
+     href={import.meta.env.VITE_SITE_URL + '/minify-css'}
     />
    </Helmet>
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>HTML Formatter Online</h1>
+     <h1>Minify CSS Online</h1>
 
-     <Form
-      onFinish={onFinish}
-      autoComplete='off'
-      layout='vertical'
-      form={form}
-      initialValues={{ tabSize: 2 }}
-     >
+     <Form onFinish={onFinish} autoComplete='off' layout='vertical' form={form}>
       <Form.Item name='text' className='hidden'>
        <Input type='hidden' />
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your HTML</label>
+       <label className='mb-10 d-block'>Enter your CSS</label>
        <AceEditor
-        mode='html'
+        mode='css'
         theme='github'
         name='inputcode'
         width='100%'
@@ -179,7 +170,7 @@ export default function FormatterHtmlPage() {
          <label className='mb-10 d-block'>Load URL</label>
          <Space.Compact style={{ width: '100%' }}>
           <Input
-           placeholder='https://'
+           placeholder='https://example.com/style.css'
            value={url}
            onChange={(e) => setUrl(e.target.value)}
           />
@@ -191,17 +182,10 @@ export default function FormatterHtmlPage() {
        </Col>
       </Row>
 
-      <Form.Item name='tabSize' label='Tab size'>
-       <Radio.Group>
-        <Radio value={2}>2</Radio>
-        <Radio value={4}>4</Radio>
-       </Radio.Group>
-      </Form.Item>
-
       <Form.Item>
        <Space>
         <Button type='primary' htmlType='submit'>
-         Format
+         Minify
         </Button>
         <Button htmlType='reset' onClick={onReset}>
          Reset all
@@ -213,11 +197,11 @@ export default function FormatterHtmlPage() {
      <div className='mb-24'>
       <label className='mb-10 d-block'>Result</label>
       <AceEditor
-       mode='html'
+       mode='css'
        theme='github'
        name='outputcode'
        width='100%'
-       height='250px'
+       height='150px'
        value={result}
        editorProps={{ $blockScrolling: true }}
        key={'two' + resetKey}
@@ -227,11 +211,32 @@ export default function FormatterHtmlPage() {
       Copy
      </Button>
      <Divider />
-     <h2>HTML Beautifier</h2>
+     <h2>CSS Compressor</h2>
      <div>
-      HTML Formatter tool online free. Formatting occurs in the browser. HTML
-      code is displayed in the editor. You can adjust the indentation. The tool
-      is useful for web developers, copywriters and website administrators.
+      <p>
+       Minifying or compressing CSS involves removing unnecessary whitespace,
+       comments, and redundant code from Cascading Style Sheets (CSS) files,
+       resulting in a smaller file size. This process is highly beneficial in
+       web development for optimizing website performance by reducing page load
+       times and bandwidth usage.
+      </p>
+      <p>
+       Minified CSS files load faster, leading to improved user experience and
+       better search engine rankings due to faster page load times. Web
+       developers commonly use CSS minification in production environments to
+       optimize website performance, especially for large-scale websites or
+       applications with numerous CSS files.
+      </p>
+      <p>
+       Furthermore, minification is useful for mobile web development, where
+       reducing file sizes is critical for improving loading times on mobile
+       devices with limited bandwidth and processing power.
+      </p>
+      <p>
+       Overall, CSS minification is an essential optimization technique used by
+       web developers and website administrators to enhance website performance,
+       improve user experience, and achieve better search engine rankings.
+      </p>
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>

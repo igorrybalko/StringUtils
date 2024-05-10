@@ -18,10 +18,15 @@ axios.interceptors.response.use(
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
 
-  const {message} = error.response.data;
-  if(message) {
-    store.dispatch(showNotif({message, variant: 'error'}))
+  let message = '';
+
+  if(error.response){
+    message = error.response.data.message;
+  }else{
+    message = error.message;
   }
+
+  store.dispatch(showNotif({message, variant: 'error'}))
   
   return Promise.reject(error);
  }
