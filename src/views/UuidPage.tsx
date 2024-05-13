@@ -38,7 +38,7 @@ export default function UuidPage() {
  return (
   <div>
    <Helmet>
-    <title>Online UUID Generator (Version 4) free</title>
+    <title>UUID Generator (Version 4) Online Free. Random UUID</title>
     <meta
      name='description'
      content='Online tool for random generate UUID (Universally Unique Identifier) - version 4'
@@ -48,7 +48,7 @@ export default function UuidPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>Online UUID (Version-4) Generator</h1>
+     <h1>UUID Generator Online (Version-4)</h1>
      <div className='text-center mb-30 p-input'>{uuid}</div>
      <div className='mb-30'>
       <Button type='primary' onClick={copyText}>

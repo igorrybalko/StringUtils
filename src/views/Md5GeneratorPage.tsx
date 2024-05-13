@@ -51,14 +51,10 @@ export default function Md5GeneratorPage() {
  return (
   <div>
    <Helmet>
-    <title>MD5 Hash Generator Online Tools</title>
+    <title>MD5 Generator Online Tool</title>
     <meta
      name='description'
-     content='Online tool for generate MD5 hash. Create MD5 for free'
-    />
-    <meta
-     name='keywords'
-     content='md5, hash, generator, create, string, encode, encrypt'
+     content='Online tool for generate MD5 hash. MD5 encryption online for free'
     />
     <link
      rel='canonical'
@@ -100,7 +96,7 @@ export default function Md5GeneratorPage() {
      </Button>
      <Divider />
      <div>
-      <h2>Online generator md5 hash</h2>
+      <h2>MD5 generator online</h2>
       <p>
        NPM package{' '}
        <a href='https://www.npmjs.com/package/md5' target='_blank'>
