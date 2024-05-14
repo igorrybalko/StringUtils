@@ -1,10 +1,11 @@
 import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 
 import AppHeader from '../components/AppHeader';
 import AppFooter from '../components/AppFooter';
-import SuShare from '../components/SuShare';
+
+const SuShare = lazy(() => import('../components/SuShare'));
 
 import { useAppSelector } from '../hooks';
 
@@ -24,9 +25,11 @@ export default function AppLayout() {
       </Suspense>
      </div>
     </Content>
-    <div className='wrapper'>
-     <SuShare />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+     <div className='wrapper'>
+      <SuShare />
+     </div>
+    </Suspense>
    </div>
    <AppFooter />
   </Layout>

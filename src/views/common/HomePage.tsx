@@ -35,17 +35,17 @@ export default function HomePage() {
     <p>
      This service is useful for web developers, SEO optimizers and copywriters.
      The service allows you to manipulate text and strings online for free. It
-     is possible to encode and decode in <strong>Base64</strong>, convert
-     strings to upper and lower case. You can generate hash in{' '}
-     <strong>md5</strong>, generate <strong>UUID</strong> (Version 4), convert
-     text to json string using JSON.stringify, format <strong>HTML</strong>,
-     minify (compress) <strong>CSS</strong>
+     is possible to encode and decode in Base64, convert strings to upper and
+     lower case.
     </p>
     <p>
-     It is also possible to convert Cyrillic to Latin for <strong>SEF</strong>{' '}
-     (convenient for search engines). This is useful for the{' '}
-     <strong>SEO</strong>. You can also count the number of words and characters
-     in the text.
+     You can generate hash in md5, generate UUID (Version 4), convert text to
+     json string using JSON.stringify, format HTML, minify (compress) CSS.
+    </p>
+    <p>
+     It is also possible to convert Cyrillic to Latin for SEF (convenient for
+     search engines). This is useful for the SEO. You can also count the number
+     of words and characters in the text.
     </p>
    </div>
   </div>

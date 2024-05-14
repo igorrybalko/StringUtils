@@ -36,7 +36,7 @@ export default function SuShare() {
       target='_blank'
       rel='nofollow noreferrer'
      >
-      <img width='32' src='/img/icon-fb.svg' alt='icon fb' />
+      <img width='32' height='32' src='/img/icon-fb.svg' alt='icon fb' />
      </a>
     </div>
     <div className='mr-10'>
@@ -45,7 +45,7 @@ export default function SuShare() {
       target='_blank'
       rel='nofollow noreferrer'
      >
-      <img width='32' src='/img/icon-x.svg' alt='icon x' />
+      <img width='32' height='32' src='/img/icon-x.svg' alt='icon x' />
      </a>
     </div>
     <div className='mr-10'>
@@ -54,7 +54,7 @@ export default function SuShare() {
       target='_blank'
       rel='nofollow noreferrer'
      >
-      <img width='32' src='/img/icon-ld.svg' alt='icon ld' />
+      <img width='32' height='32' src='/img/icon-ld.svg' alt='icon ld' />
      </a>
     </div>
    </div>

@@ -21,6 +21,7 @@ export default function AppCount() {
      }
      width='88'
      height='15'
+     alt='counter'
     />
    </a>
   </div>
