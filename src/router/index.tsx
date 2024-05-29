@@ -19,6 +19,7 @@ const NoMatch = lazy(() => import('../views/common/NoMatch'));
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
 const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
 const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
+const BeautifyJsPage = lazy(() => import('../views/formatter/BeautifyJsPage'));
 
 
 const routes = createBrowserRouter([
@@ -91,6 +92,11 @@ const routes = createBrowserRouter([
     path: 'minify-css',
     element: <MinifyCssPage />,
     id: 'minify-css',
+   },
+   {
+    path: 'beautify-js',
+    element: <BeautifyJsPage />,
+    id: 'beautify-js',
    },
    { path: '*', element: <NoMatch /> },
   ],

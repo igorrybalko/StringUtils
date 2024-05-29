@@ -40,7 +40,7 @@ export default function HomePage() {
     </p>
     <p>
      You can generate hash in md5, generate UUID (Version 4), convert text to
-     json string using JSON.stringify, format HTML, minify (compress) CSS.
+     json string using JSON.stringify, format HTML, minify (compress) CSS, Beautify JavaScript.
     </p>
     <p>
      It is also possible to convert Cyrillic to Latin for SEF (convenient for

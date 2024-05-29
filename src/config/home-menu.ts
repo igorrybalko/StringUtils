@@ -47,6 +47,10 @@ const list = [
   url: '/minify-css',
   title: 'Minify CSS',
  },
+ {
+  url: '/beautify-js',
+  title: 'Beautify JS',
+ },
 ];
 
 export default list;

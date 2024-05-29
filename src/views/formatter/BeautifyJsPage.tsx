@@ -11,11 +11,11 @@ import {
 } from 'antd';
 import { Helmet } from 'react-helmet';
 import { useState, useRef } from 'react';
-import { prettify } from 'htmlfy';
+import jsBeautify from 'js-beautify';
 import AceEditor from 'react-ace';
 import copy from 'copy-to-clipboard';
 
-import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
@@ -25,8 +25,8 @@ import { getStingByUrl } from '../../store/slices/common';
 
 const navList = [
  {
-  title: 'Beautify JS',
-  url: '/beautify-js',
+  title: 'HTML Formatter',
+  url: '/html-formatter',
  },
  {
   title: 'Minify CSS',
@@ -34,7 +34,7 @@ const navList = [
  },
 ];
 
-export default function FormatterHtmlPage() {
+export default function BeautifyJsPage() {
  useLoadPage();
 
  const [result, setResult] = useState('');
@@ -52,22 +52,10 @@ export default function FormatterHtmlPage() {
  const onFinish = (val: { text: string; tabSize: number }) => {
   try {
    if (val.text?.length) {
-    const html = val.text.trim();
-    let str = html;
+    const code = val.text.trim();
+    let str = code;
 
-    const doctype = html.slice(0, 15).toLowerCase();
-
-    if (doctype === '<!doctype html>') {
-     str = html.slice(15);
-    }
-
-    let txt = prettify(str, {
-     tab_size: val.tabSize,
-    });
-
-    if (doctype === '<!doctype html>') {
-     txt = `<!DOCTYPE html>\n${txt}`;
-    }
+    let txt = jsBeautify(str, { indent_size: val.tabSize });
 
     setEditorValue(val.text);
 
@@ -135,20 +123,20 @@ export default function FormatterHtmlPage() {
  return (
   <div>
    <Helmet>
-    <title>HTML Formatter Online Free | HTML Beautifier</title>
+    <title>Beautify JS Online Free | JS Formatter</title>
     <meta
      name='description'
-     content='Online tool for formatting HTML in the editor for free. Easy to use'
+     content='Online tool for formatting JavaScript in the editor for free. Easy to use'
     />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/formatter-html'}
+     href={import.meta.env.VITE_SITE_URL + '/beautify-js'}
     />
    </Helmet>
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>HTML Formatter Online</h1>
+     <h1>JavaScript Formatter Online</h1>
 
      <Form
       onFinish={onFinish}
@@ -162,9 +150,9 @@ export default function FormatterHtmlPage() {
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your HTML</label>
+       <label className='mb-10 d-block'>Enter your JS code</label>
        <AceEditor
-        mode='html'
+        mode='javascript'
         theme='github'
         name='inputcode'
         width='100%'
@@ -217,7 +205,7 @@ export default function FormatterHtmlPage() {
      <div className='mb-24'>
       <label className='mb-10 d-block'>Result</label>
       <AceEditor
-       mode='html'
+       mode='javascript'
        theme='github'
        name='outputcode'
        width='100%'
@@ -231,11 +219,33 @@ export default function FormatterHtmlPage() {
       Copy
      </Button>
      <Divider />
-     <h2>HTML Beautifier</h2>
+     <h2>JS Beautifier</h2>
      <div>
-      HTML Formatter tool online free. Formatting occurs in the browser. HTML
-      code is displayed in the editor. You can adjust the indentation. The tool
-      is useful for web developers, copywriters and website administrators.
+      <p>
+       An online JavaScript beautifier is a valuable tool that transforms
+       minified or poorly formatted JavaScript code into a well-organized,
+       readable format. This service adds appropriate indentation, spacing, and
+       line breaks to make the code easier to understand and debug. It is
+       particularly useful for developers who need to quickly comprehend complex
+       or minified JavaScript code, often encountered when working with
+       third-party libraries or legacy projects.
+      </p>
+
+      <p>
+       Using a JavaScript beautifier, developers can enhance code readability,
+       making it easier to maintain and modify. This is crucial in collaborative
+       environments where multiple developers work on the same codebase,
+       ensuring that everyone can read and understand the code easily. The tool
+       is also beneficial for educational purposes, helping new developers learn
+       best practices in code formatting and structure.
+      </p>
+
+      <p>
+       Overall, online JavaScript beautifiers serve as essential tools for
+       developers, enhancing productivity, code maintainability, and
+       collaboration by transforming messy or minified code into clean, readable
+       scripts.
+      </p>
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
