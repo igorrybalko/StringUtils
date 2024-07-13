@@ -20,6 +20,7 @@ const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage')
 const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
 const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
 const BeautifyJsPage = lazy(() => import('../views/formatter/BeautifyJsPage'));
+const FormatterCssPage = lazy(() => import('../views/formatter/FormatterCssPage'));
 
 
 const routes = createBrowserRouter([
@@ -97,6 +98,11 @@ const routes = createBrowserRouter([
     path: 'beautify-js',
     element: <BeautifyJsPage />,
     id: 'beautify-js',
+   },
+   {
+    path: 'beautify-css',
+    element: <FormatterCssPage />,
+    id: 'beautify-css',
    },
    { path: '*', element: <NoMatch /> },
   ],

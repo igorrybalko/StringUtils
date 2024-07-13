@@ -29,6 +29,10 @@ const navList = [
   url: '/html-formatter',
  },
  {
+  title: 'CSS Formatter',
+  url: '/beautify-css',
+ },
+ {
   title: 'Minify CSS',
   url: '/minify-css',
  },

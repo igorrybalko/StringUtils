@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 package-lock.json
+tsconfig.node.tsbuildinfo
 
 # Editor directories and files
 .vscode/*

@@ -11,11 +11,12 @@ import {
 } from 'antd';
 import { Helmet } from 'react-helmet';
 import { useState, useRef } from 'react';
-import { prettify } from 'htmlfy';
+// @ts-ignore
+import * as beautify from 'simply-beautiful';
 import AceEditor from 'react-ace';
 import copy from 'copy-to-clipboard';
 
-import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-css';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
@@ -25,12 +26,12 @@ import { getStingByUrl } from '../../store/slices/common';
 
 const navList = [
  {
-  title: 'Beautify JS',
-  url: '/beautify-js',
+  title: 'HTML Formatter',
+  url: '/html-formatter',
  },
  {
-  title: 'CSS Formatter',
-  url: '/beautify-css',
+  title: 'Beautify JS',
+  url: '/beautify-js',
  },
  {
   title: 'Minify CSS',
@@ -38,7 +39,7 @@ const navList = [
  },
 ];
 
-export default function FormatterHtmlPage() {
+export default function FormatterCssPage() {
  useLoadPage();
 
  const [result, setResult] = useState('');
@@ -56,22 +57,12 @@ export default function FormatterHtmlPage() {
  const onFinish = (val: { text: string; tabSize: number }) => {
   try {
    if (val.text?.length) {
-    const html = val.text.trim();
-    let str = html;
+    const css = val.text.trim();
+    let str = css;
 
-    const doctype = html.slice(0, 15).toLowerCase();
-
-    if (doctype === '<!doctype html>') {
-     str = html.slice(15);
-    }
-
-    let txt = prettify(str, {
-     tab_size: val.tabSize,
+    let txt = beautify.css(str, {
+     indent_size: val.tabSize,
     });
-
-    if (doctype === '<!doctype html>') {
-     txt = `<!DOCTYPE html>\n${txt}`;
-    }
 
     setEditorValue(val.text);
 
@@ -110,49 +101,59 @@ export default function FormatterHtmlPage() {
  function loadUrl() {
   const trimUrl = url.trim();
   if (trimUrl) {
-   if (trimUrl.startsWith('https://')) {
-    setLoading(true);
+   const notHttps = !trimUrl.startsWith('https://');
+   const notCss = !trimUrl.includes('.css');
 
-    dispatch(getStingByUrl(url))
-     .unwrap()
-     .then((res) => {
-      setEditorValue(res.content);
-      form.setFieldsValue({
-       text: res.content,
-      });
-     })
-     .finally(() => {
-      setTimeout(() => {
-       setLoading(false);
-      }, 500);
-     })
-     .catch(() => {});
-   } else {
+   if (notHttps || notCss) {
+    const httpsTxt = 'URL should start with "https://"';
+    const cssTxt = 'URL should contain ".сss"';
+
+    const description = notHttps ? httpsTxt : cssTxt;
+
     api.error({
      message: 'Error',
-     description: 'URL should start with "https://"',
+     description,
     });
+
+    return;
    }
+
+   setLoading(true);
+
+   dispatch(getStingByUrl(url))
+    .unwrap()
+    .then((res) => {
+     setEditorValue(res.content);
+     form.setFieldsValue({
+      text: res.content,
+     });
+    })
+    .finally(() => {
+     setTimeout(() => {
+      setLoading(false);
+     }, 500);
+    })
+    .catch(() => {});
   }
  }
 
  return (
   <div>
    <Helmet>
-    <title>HTML Formatter Online Free | HTML Beautifier</title>
+    <title>CSS Formatter Online Free | CSS Beautifier</title>
     <meta
      name='description'
-     content='Online tool for formatting HTML in the editor for free. Easy to use'
+     content='Online tool for formatting CSS in the editor for free. Easy to use'
     />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/formatter-html'}
+     href={import.meta.env.VITE_SITE_URL + '/beautify-css'}
     />
    </Helmet>
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>HTML Formatter Online</h1>
+     <h1>CSS Formatter Online</h1>
 
      <Form
       onFinish={onFinish}
@@ -166,9 +167,9 @@ export default function FormatterHtmlPage() {
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your HTML</label>
+       <label className='mb-10 d-block'>Enter your CSS</label>
        <AceEditor
-        mode='html'
+        mode='css'
         theme='github'
         name='inputcode'
         width='100%'
@@ -221,7 +222,7 @@ export default function FormatterHtmlPage() {
      <div className='mb-24'>
       <label className='mb-10 d-block'>Result</label>
       <AceEditor
-       mode='html'
+       mode='css'
        theme='github'
        name='outputcode'
        width='100%'
@@ -235,9 +236,9 @@ export default function FormatterHtmlPage() {
       Copy
      </Button>
      <Divider />
-     <h2>HTML Beautifier</h2>
+     <h2>CSS Beautifier</h2>
      <div>
-      HTML Formatter tool online free. Formatting occurs in the browser. HTML
+      CSS Formatter tool online free. Formatting happens right in your browser. CSS
       code is displayed in the editor. You can adjust the indentation. The tool
       is useful for web developers, copywriters and website administrators.
      </div>

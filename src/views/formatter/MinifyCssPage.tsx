@@ -31,6 +31,10 @@ const navList = [
   title: 'Beautify JS',
   url: '/beautify-js',
  },
+ {
+  title: 'CSS Formatter',
+  url: '/beautify-css',
+ },
 ];
 
 export default function MinifyCssPage() {

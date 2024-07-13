@@ -48,6 +48,10 @@ const list = [
   title: 'Minify CSS',
  },
  {
+  url: '/beautify-css',
+  title: 'CSS Formatter',
+ },
+ {
   url: '/beautify-js',
   title: 'Beautify JS',
  },
