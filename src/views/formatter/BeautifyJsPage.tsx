@@ -223,8 +223,8 @@ export default function BeautifyJsPage() {
       Copy
      </Button>
      <Divider />
+     <div className='info-text'>
      <h2>JS Beautifier</h2>
-     <div>
       <p>
        An online JavaScript beautifier is a valuable tool that transforms
        minified or poorly formatted JavaScript code into a well-organized,

@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
  useLoadPage();
 
  return (
-  <div>
+  <div className='info-text'>
    <Helmet>
     <title>Privacy Policy for String Utils</title>
 

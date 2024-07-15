@@ -168,7 +168,7 @@ export default function ImgToBase64Page() {
       Copy
      </Button>
      <Divider />
-     <div>
+     <div className='info-text'>
       <h2>Encode your image to Base64 online</h2>
       <p>
        You can upload an image in next formats:{' '}

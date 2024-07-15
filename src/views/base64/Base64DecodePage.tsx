@@ -119,7 +119,7 @@ export default function Base64DecodePage() {
       Copy
      </Button>
      <Divider />
-     <div>
+     <div className='info-text'>
       <h2>About Base64 Decoding</h2>
       <p>
        Decoding is done using the{' '}

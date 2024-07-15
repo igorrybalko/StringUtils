@@ -235,8 +235,8 @@ export default function FormatterHtmlPage() {
       Copy
      </Button>
      <Divider />
-     <h2>HTML Beautifier</h2>
-     <div>
+     <div className='info-text'>
+      <h2>HTML Beautifier</h2>
       HTML Formatter tool online free. Formatting occurs in the browser. HTML
       code is displayed in the editor. You can adjust the indentation. The tool
       is useful for web developers, copywriters and website administrators.

@@ -164,7 +164,7 @@ export default function UnixtimestampPage() {
 
    <AppUtFullDate />
 
-   <div>
+   <div className='info-text'>
     <h2>Unix time stamp</h2>
 
     <p>

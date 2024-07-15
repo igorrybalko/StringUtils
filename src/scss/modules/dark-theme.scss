@@ -4,14 +4,17 @@
   color: #fff;
  }
 
+ h1,
+ h3,
+ .caption,
  .ant-form label,
  .ant-upload-list-item-name,
  .ant-radio-wrapper,
  .ant-checkbox-wrapper,
- .ant-tag,
  .ant-input-number .ant-input-number-input,
  .ant-form-item .ant-form-item-label > label,
  .ant-input,
+ .p-input,
  .info-text {
   color: #fff;
  }
@@ -87,9 +90,9 @@
   background-color: #303030;
  }
 
- .ant-upload-list-item-actions{
-  path{
-    fill: #fff;
+ .ant-upload-list-item-actions {
+  path {
+   fill: #fff;
   }
  }
 }

@@ -95,7 +95,7 @@ export default function Md5GeneratorPage() {
       Copy
      </Button>
      <Divider />
-     <div>
+     <div className='info-text'>
       <h2>MD5 generator online</h2>
       <p>
        NPM package{' '}

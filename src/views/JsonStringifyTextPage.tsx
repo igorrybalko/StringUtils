@@ -91,7 +91,7 @@ export default function JsonStringifyTextPage() {
    </Row>
 
    <Divider />
-   <div>
+   <div className='info-text'>
     <h2>About JSON.stringify</h2>
     <p>
      This online service convert string value to JSON String using JavaScript

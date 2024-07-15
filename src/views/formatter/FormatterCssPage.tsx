@@ -236,11 +236,12 @@ export default function FormatterCssPage() {
       Copy
      </Button>
      <Divider />
-     <h2>CSS Beautifier</h2>
-     <div>
-      CSS Formatter tool online free. Formatting happens right in your browser. CSS
-      code is displayed in the editor. You can adjust the indentation. The tool
-      is useful for web developers, copywriters and website administrators.
+
+     <div className='info-text'>
+      <h2>CSS Beautifier</h2>
+      CSS Formatter tool online free. Formatting happens right in your browser.
+      CSS code is displayed in the editor. You can adjust the indentation. The
+      tool is useful for web developers, copywriters and website administrators.
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>

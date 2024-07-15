@@ -219,8 +219,9 @@ export default function MinifyCssPage() {
       Copy
      </Button>
      <Divider />
-     <h2>CSS Compressor</h2>
-     <div>
+
+     <div className='info-text'>
+      <h2>CSS Compressor</h2>
       <p>
        Minifying or compressing CSS involves removing unnecessary whitespace,
        comments, and redundant code from Cascading Style Sheets (CSS) files,

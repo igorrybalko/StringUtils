@@ -136,7 +136,7 @@ export default function WordCounterPage() {
      </div>
 
      <Divider />
-     <div>
+     <div className='info-text'>
       Online character and word counting tools provide a convenient way to keep
       track of the number of characters and words in a text. They are valuable
       for students, writers, journalists, and marketers, helping them adhere to

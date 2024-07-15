@@ -60,8 +60,8 @@ export default function UuidPage() {
        Generate new UUID
       </Button>
       <Divider />
+      <div className='info-text'>
       <h2>What is UUID V4?</h2>
-      <div>
        <p>
         UUID (Universally Unique Identifier) version 4 is a randomly generated
         identifier composed of 32 hexadecimal digits, typically displayed in the

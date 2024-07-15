@@ -138,7 +138,7 @@ export default function CaseConverterPage() {
       Copy
      </Button>
      <Divider />
-     <div>
+     <div className='info-text'>
       <h2>About Case Converter</h2>
       <p>
        Online tools for text case modification, allowing users to convert text

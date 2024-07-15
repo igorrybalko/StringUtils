@@ -291,8 +291,9 @@ export default function TranslitUrlPage() {
     Copy
    </Button>
    <Divider />
-   <h2>About URL Transliteration</h2>
-   <div>
+
+   <div className='info-text'>
+    <h2>About URL Transliteration</h2>
     An online service for transliterating URLs from Cyrillic to Latin characters
     proves highly beneficial for individuals seeking to optimize their web
     presence. This tool facilitates the conversion of non-Latin characters in
@@ -307,7 +308,7 @@ export default function TranslitUrlPage() {
     online experience for a broader audience.
    </div>
    <Divider />
-   <div>
+   <div className='info-text'>
     <h3>Rules:</h3>
 
     <div className='mb-24'>

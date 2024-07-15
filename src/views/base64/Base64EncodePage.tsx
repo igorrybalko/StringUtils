@@ -122,7 +122,7 @@ export default function Base64EncodePage() {
       Copy
      </Button>
      <Divider />
-     <div>
+     <div className='info-text'>
       <h2>Encode a string to Base64 online</h2>
       <p>
        Encoding is done using the{' '}
