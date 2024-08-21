@@ -22,6 +22,8 @@ type DataType = {
  val: string;
 };
 
+let timer: number | null = null;
+
 export default function UnixtimestampPage() {
  const [api, contextHolder] = notification.useNotification();
  const [currentTime, setCurrentTime] = useState<number>();
@@ -42,14 +44,12 @@ export default function UnixtimestampPage() {
  ];
 
  useEffect(() => {
-  const timer = setInterval(() => {
-   setCurrentTime(getCurrentTimestamp());
-  }, 1000);
+  startTimer();
 
   setPlaceholder(String(getCurrentTimestamp()));
 
   return () => {
-   clearInterval(timer);
+   stopTimer();
   };
  }, []);
 
@@ -90,6 +90,19 @@ export default function UnixtimestampPage() {
   });
  }
 
+ function stopTimer() {
+  console.log('on');
+  if (timer) {
+   clearInterval(timer);
+  }
+ }
+
+ function startTimer() {
+  timer = setInterval(() => {
+   setCurrentTime(getCurrentTimestamp());
+  }, 1000);
+ }
+
  return (
   <div>
    <Helmet>
@@ -113,7 +126,9 @@ export default function UnixtimestampPage() {
     <h3>Current Unix epoch time</h3>
 
     <p>
-     <strong>{currentTime}</strong>
+     <span onMouseEnter={stopTimer} onMouseLeave={startTimer}>
+      <strong>{currentTime}</strong>
+     </span>
     </p>
 
     <p>Seconds since Jan 01 1970</p>

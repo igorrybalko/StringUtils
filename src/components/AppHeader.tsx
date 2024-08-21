@@ -1,5 +1,6 @@
 import { Layout } from 'antd';
 import { Link } from 'react-router-dom';
+import { MoonOutlined, SunOutlined, HeartOutlined } from '@ant-design/icons';
 
 import { useAppDispatch } from '../hooks';
 import { toggleTheme } from '../store/slices/common';
@@ -17,9 +18,14 @@ export default function AppHeader() {
    <div className='wrapper'>
     <div className='d-flex header-inner'>
      <Link to='/'>StringUtils</Link>
-
-     <div className='header-inner__toggle' onClick={toggle}>
-      Toggle theme
+     <div className='d-flex top-menu'>
+      <Link to='/donate'>
+       <HeartOutlined /> Donate
+      </Link>
+      <div className='header-inner__toggle' onClick={toggle}>
+       <MoonOutlined />
+       <SunOutlined /> Toggle theme
+      </div>
      </div>
     </div>
    </div>

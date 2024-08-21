@@ -4,6 +4,7 @@
   color: #fff;
  }
 
+ p,
  h1,
  h3,
  .caption,
@@ -93,6 +94,15 @@
  .ant-upload-list-item-actions {
   path {
    fill: #fff;
+  }
+ }
+
+ .header-inner__toggle {
+  .anticon-moon{
+    display: none;
+  }
+  .anticon-sun{
+    display: inline-block;
   }
  }
 }

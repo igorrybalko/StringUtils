@@ -17,6 +17,8 @@ import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
 
 const NoMatch = lazy(() => import('../views/common/NoMatch'));
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
+const DonatePage = lazy(() => import('../views/common/DonatePage'));
+
 const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
 const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
 const BeautifyJsPage = lazy(() => import('../views/formatter/BeautifyJsPage'));
@@ -103,6 +105,11 @@ const routes = createBrowserRouter([
     path: 'beautify-css',
     element: <FormatterCssPage />,
     id: 'beautify-css',
+   },
+   {
+    path: 'donate',
+    element: <DonatePage />,
+    id: 'donate',
    },
    { path: '*', element: <NoMatch /> },
   ],
