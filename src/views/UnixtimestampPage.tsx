@@ -22,7 +22,7 @@ type DataType = {
  val: string;
 };
 
-let timer: number | null = null;
+let timer: ReturnType<typeof setInterval> | null = null;
 
 export default function UnixtimestampPage() {
  const [api, contextHolder] = notification.useNotification();
@@ -91,7 +91,6 @@ export default function UnixtimestampPage() {
  }
 
  function stopTimer() {
-  console.log('on');
   if (timer) {
    clearInterval(timer);
   }
