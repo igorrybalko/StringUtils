@@ -14,7 +14,16 @@ import { Helmet } from 'react-helmet';
 
 import { useLoadPage } from '../hooks';
 
+import AppSidebar from '../components/AppSidebar';
+
 const { TextArea } = Input;
+
+const navList = [
+ {
+  title: 'JSON Minify',
+  url: '/json-minify',
+ },
+];
 
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
@@ -54,10 +63,11 @@ export default function JsonStringifyTextPage() {
     />
    </Helmet>
    {contextHolder}
-   <h1>JSON Stringify Text Generator Online</h1>
-   <p>Free online tool for JSON stringifying text</p>
+
    <Row gutter={[24, 0]}>
-    <Col xs={24} sm={12}>
+    <Col xs={24} sm={24} md={18}>
+     <h1>JSON Stringify Text Generator Online</h1>
+     <p>Free online tool for JSON stringifying text</p>
      <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
       <Form.Item
        name='text'
@@ -81,33 +91,37 @@ export default function JsonStringifyTextPage() {
        </Space>
       </Form.Item>
      </Form>
-    </Col>
-    <Col xs={24} sm={12}>
+     <Divider />
+     <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
      <Button type='primary' onClick={copyText}>
       Copy
      </Button>
+
+     <Divider />
+     <div className='info-text'>
+      <h2>About JSON.stringify</h2>
+      <p>
+       This online service convert string value to JSON String using JavaScript
+       JSON.stringify()
+      </p>
+      <p>
+       <strong>JSON stringify</strong> is particularly useful when working with
+       APIs, as it allows developers to easily serialize JavaScript objects into
+       a format that can be transmitted over the network. Additionally, it's
+       used in client-server communication, where JavaScript objects need to be
+       converted to strings before being sent to the server, or vice versa, when
+       receiving JSON data from the server and parsing it into JavaScript
+       objects. Overall, JSON.stringify plays a crucial role in JavaScript
+       programming for handling data interchange in a structured and efficient
+       manner.
+      </p>
+     </div>
+    </Col>
+    <Col xs={24} sm={24} md={6}>
+     <AppSidebar list={navList} />
     </Col>
    </Row>
-
-   <Divider />
-   <div className='info-text'>
-    <h2>About JSON.stringify</h2>
-    <p>
-     This online service convert string value to JSON String using JavaScript
-     JSON.stringify()
-    </p>
-    <p>
-     <strong>JSON stringify</strong> is particularly useful when working with
-     APIs, as it allows developers to easily serialize JavaScript objects into a
-     format that can be transmitted over the network. Additionally, it's used in
-     client-server communication, where JavaScript objects need to be converted
-     to strings before being sent to the server, or vice versa, when receiving
-     JSON data from the server and parsing it into JavaScript objects. Overall,
-     JSON.stringify plays a crucial role in JavaScript programming for handling
-     data interchange in a structured and efficient manner.
-    </p>
-   </div>
   </div>
  );
 }

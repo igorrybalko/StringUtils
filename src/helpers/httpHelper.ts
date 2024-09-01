@@ -33,7 +33,7 @@ axios.interceptors.response.use(
 );
 
 const httpHelper = {
- get(url: string) {
+ get(url: string): Promise<any> {
   return new Promise((resolve, reject) => {
    axios
     .get(url)

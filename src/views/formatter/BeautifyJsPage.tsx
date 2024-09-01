@@ -36,6 +36,10 @@ const navList = [
   title: 'Minify CSS',
   url: '/minify-css',
  },
+ {
+  title: 'JSON Minify',
+  url: '/json-minify',
+ },
 ];
 
 export default function BeautifyJsPage() {
@@ -154,7 +158,7 @@ export default function BeautifyJsPage() {
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your JS code</label>
+       <label>Enter your JS code</label>
        <AceEditor
         mode='javascript'
         theme='github'
@@ -172,7 +176,7 @@ export default function BeautifyJsPage() {
       <Row gutter={[12, 0]}>
        <Col xs={24} sm={24} md={12}>
         <div className='mb-24'>
-         <label className='mb-10 d-block'>Load URL</label>
+         <label>Load URL</label>
          <Space.Compact style={{ width: '100%' }}>
           <Input
            placeholder='https://'
@@ -207,7 +211,7 @@ export default function BeautifyJsPage() {
      </Form>
      <Divider />
      <div className='mb-24'>
-      <label className='mb-10 d-block'>Result</label>
+      <label>Result</label>
       <AceEditor
        mode='javascript'
        theme='github'
@@ -224,7 +228,7 @@ export default function BeautifyJsPage() {
      </Button>
      <Divider />
      <div className='info-text'>
-     <h2>JS Beautifier</h2>
+      <h2>JS Beautifier</h2>
       <p>
        An online JavaScript beautifier is a valuable tool that transforms
        minified or poorly formatted JavaScript code into a well-organized,

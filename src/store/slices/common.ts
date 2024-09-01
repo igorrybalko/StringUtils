@@ -11,9 +11,22 @@ export const getStingByUrl = createAsyncThunk(
  'common/getStingByUrl',
  async (url: string, thunkAPI) => {
   try {
-   const fileInString = await apiCommon.getStingByUrl(url);
+   const result = await apiCommon.getStingByUrl(url);
 
-   return fileInString;
+   return result;
+  } catch (e) {
+   return thunkAPI.rejectWithValue(e);
+  }
+ }
+);
+
+export const getPageContent = createAsyncThunk(
+ 'common/getPageContent',
+ async (id: number, thunkAPI) => {
+  try {
+   const result = await apiCommon.getPageContent(id);
+
+   return result;
   } catch (e) {
    return thunkAPI.rejectWithValue(e);
   }
@@ -23,7 +36,7 @@ export const getStingByUrl = createAsyncThunk(
 const initialState = {
  darkTheme: false,
  notifFlag: false,
- errorMessage: ''
+ errorMessage: '',
 };
 
 export const commonSlice = createSlice({

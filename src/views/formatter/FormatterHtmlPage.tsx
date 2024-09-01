@@ -36,6 +36,10 @@ const navList = [
   title: 'Minify CSS',
   url: '/minify-css',
  },
+ {
+  title: 'JSON Minify',
+  url: '/json-minify',
+ },
 ];
 
 export default function FormatterHtmlPage() {
@@ -166,7 +170,7 @@ export default function FormatterHtmlPage() {
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your HTML</label>
+       <label>Enter your HTML</label>
        <AceEditor
         mode='html'
         theme='github'
@@ -184,7 +188,7 @@ export default function FormatterHtmlPage() {
       <Row gutter={[12, 0]}>
        <Col xs={24} sm={24} md={12}>
         <div className='mb-24'>
-         <label className='mb-10 d-block'>Load URL</label>
+         <label>Load URL</label>
          <Space.Compact style={{ width: '100%' }}>
           <Input
            placeholder='https://'
@@ -219,7 +223,7 @@ export default function FormatterHtmlPage() {
      </Form>
      <Divider />
      <div className='mb-24'>
-      <label className='mb-10 d-block'>Result</label>
+      <label>Result</label>
       <AceEditor
        mode='html'
        theme='github'

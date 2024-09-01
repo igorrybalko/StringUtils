@@ -35,6 +35,10 @@ const navList = [
   title: 'CSS Formatter',
   url: '/beautify-css',
  },
+ {
+  title: 'JSON Minify',
+  url: '/json-minify',
+ },
 ];
 
 export default function MinifyCssPage() {
@@ -157,7 +161,7 @@ export default function MinifyCssPage() {
       </Form.Item>
 
       <div className='mb-24'>
-       <label className='mb-10 d-block'>Enter your CSS</label>
+       <label>Enter your CSS</label>
        <AceEditor
         mode='css'
         theme='github'
@@ -175,7 +179,7 @@ export default function MinifyCssPage() {
       <Row gutter={[12, 0]}>
        <Col xs={24} sm={24} md={12}>
         <div className='mb-24'>
-         <label className='mb-10 d-block'>Load URL</label>
+         <label>Load URL</label>
          <Space.Compact style={{ width: '100%' }}>
           <Input
            placeholder='https://example.com/style.css'
@@ -203,7 +207,7 @@ export default function MinifyCssPage() {
      </Form>
      <Divider />
      <div className='mb-24'>
-      <label className='mb-10 d-block'>Result</label>
+      <label>Result</label>
       <AceEditor
        mode='css'
        theme='github'

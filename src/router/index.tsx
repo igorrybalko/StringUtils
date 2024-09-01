@@ -23,6 +23,7 @@ const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPag
 const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
 const BeautifyJsPage = lazy(() => import('../views/formatter/BeautifyJsPage'));
 const FormatterCssPage = lazy(() => import('../views/formatter/FormatterCssPage'));
+const MinifyJsonPage = lazy(() => import('../views/formatter/MinifyJsonPage'));
 
 
 const routes = createBrowserRouter([
@@ -85,6 +86,11 @@ const routes = createBrowserRouter([
     path: 'json-stringify',
     element: <JsonStringifyTextPage />,
     id: 'json-stringify',
+   },
+   {
+    path: 'json-minify',
+    element: <MinifyJsonPage />,
+    id: 'json-minify',
    },
    {
     path: 'html-formatter',

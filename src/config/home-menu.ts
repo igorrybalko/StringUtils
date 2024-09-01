@@ -40,6 +40,10 @@ const list = [
   title: 'JSON Stringify',
  },
  {
+  url: '/json-minify',
+  title: 'JSON Minify',
+ },
+ {
   url: '/html-formatter',
   title: 'HTML Formatter',
  },

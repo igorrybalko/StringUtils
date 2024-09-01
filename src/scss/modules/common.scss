@@ -18,7 +18,7 @@ main {
 }
 
 .p-textarea {
- min-height: 120px;
+ min-height: 135px;
  padding: 7px 11px;
  word-break: break-word;
  overflow: auto;
@@ -48,6 +48,15 @@ html {
  line-height: 1.3;
 }
 
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: block;
+}
+label.ant-radio-wrapper {
+  font-weight: normal;
+}
+
 .ant-layout {
  min-height: 100%;
  justify-content: space-between;
@@ -60,12 +69,17 @@ li,
  margin-bottom: 10px;
 }
 
+li.ant-list-item,
 .mb-0 {
  margin-bottom: 0;
 }
 
 .m-0 {
  margin: 0;
+}
+
+.mb-10 {
+ margin-bottom: 10px;
 }
 
 .mb-24 {
@@ -84,9 +98,15 @@ li,
  margin-top: 10px;
 }
 
+.f-sm {
+ font-size: 12px;
+}
+
 .ant-layout-footer {
  background: #001529;
  color: #fff;
+ padding: 15px 0;
+ font-size: 16px;
 }
 
 .ant-layout-content {
@@ -153,11 +173,6 @@ li,
 
 .ant-layout-header {
  padding: 0;
-}
-
-.ant-layout-footer {
- padding-left: 0;
- padding-right: 0;
 }
 
 .caption {
