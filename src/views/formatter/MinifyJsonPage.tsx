@@ -155,7 +155,7 @@ export default function JsonStringifyTextPage() {
     <Col xs={24} sm={24} md={18}>
      <h1>{pd.title}</h1>
      <p>{pd.subtitle}</p>
-     <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
+     <Form onFinish={onFinish} autoComplete='off' layout='vertical' form={form}>
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
