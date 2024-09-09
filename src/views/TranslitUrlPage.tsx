@@ -269,6 +269,7 @@ export default function TranslitUrlPage() {
     <Form.Item
      name='text'
      rules={[{ required: true, message: 'Please enter data' }]}
+     label='Enter text'
     >
      <Input placeholder='Type your text...' spellCheck='false' />
     </Form.Item>

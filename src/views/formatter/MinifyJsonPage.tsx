@@ -16,6 +16,7 @@ import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl, getPageContent } from '../../store/slices/common';
 
 import AppSidebar from '../../components/AppSidebar';
+import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
 
@@ -42,22 +43,7 @@ const navList = [
  },
 ];
 
-const initPd = {
- title: '',
- subtitle: '',
- content: '',
- example: {
-  title: '',
-  input: {
-   label: '',
-   value: '',
-  },
-  output: {
-   label: '',
-   value: '',
-  },
- },
-};
+const initPd = new PageData;
 
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
@@ -159,6 +145,7 @@ export default function JsonStringifyTextPage() {
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter your JSON'
       >
        <TextArea
         className='textarea'

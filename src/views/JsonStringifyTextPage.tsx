@@ -72,6 +72,7 @@ export default function JsonStringifyTextPage() {
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter your data'
       >
        <TextArea
         className='textarea'

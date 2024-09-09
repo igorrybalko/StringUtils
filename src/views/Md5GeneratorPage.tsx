@@ -69,6 +69,7 @@ export default function Md5GeneratorPage() {
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter text'
       >
        <TextArea
         className='textarea'

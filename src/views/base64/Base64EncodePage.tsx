@@ -14,12 +14,16 @@ import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../../components/AppSidebar';
 import { useLoadPage } from '../../hooks';
+import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
+
+const initPd = new PageData;
 
 export default function Base64EncodePage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  useLoadPage();
 
@@ -125,20 +129,41 @@ export default function Base64EncodePage() {
      <div className='info-text'>
       <h2>Encode a string to Base64 online</h2>
       <p>
-       Encoding is done using the{' '}
-       <a
-        href='https://developer.mozilla.org/en-US/docs/Web/API/btoa'
-        target='_blank'
-        rel='nofollow'
-       >
-        btoa()
-       </a>{' '}
-       function
+       Base64 is a binary-to-text encoding scheme that converts binary data into
+       an ASCII string format. It is commonly used to encode data so that it can
+       be safely transmitted over mediums that handle only text, such as email
+       or HTTP. Base64 works by dividing binary data into 6-bit chunks and
+       mapping each chunk to a corresponding ASCII character. This encoding
+       method ensures that the data remains intact and unaltered when
+       transmitted over text-based protocols.
       </p>
       <p>
-       Base64 is a standard for encoding binary data using only 64 ASCII
-       characters. The encoding uses Latin characters A-Z, a-z, numbers 0-9 (62
-       characters in total) and 2 additional characters
+       An online service that allows users to encode a string to Base64 would be
+       highly useful for developers, particularly when they need to encode data
+       such as sensitive information into a text-friendly format. For example,
+       if an API requires a file to be embedded in a request or when sending a
+       binary file over email as part of the payload, encoding the data in
+       Base64 ensures that the underlying binary data is safely transported.
+      </p>
+      <p>
+       Using the service would be straightforward: users would input their
+       string (such as text or binary data) into a provided text box, and the
+       service would output the Base64-encoded version. This could be used in
+       cases like embedding CSS, securely transmitting sensitive data like
+       passwords, or storing non-text data in databases in a text-friendly way.
+      </p>
+      <p>
+       This kind of tool is also essential in authentication systems where
+       Base64 is used to encode credentials for HTTP Basic Authentication or to
+       generate tokens for OAuth systems. Since Base64 encoding is reversible, a
+       separate decoding tool would be necessary to convert the encoded text
+       back into its original form.
+      </p>
+      <p>
+       In short, an online Base64 encoding service helps developers simplify and
+       safeguard data transmission, while making it compatible with various
+       text-based systems. It is invaluable for ensuring that data remains
+       intact when transmitted across different platforms.
       </p>
      </div>
     </Col>

@@ -100,6 +100,7 @@ export default function WordCounterPage() {
       <Form.Item
        name='text'
        rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter text'
       >
        <TextArea
         className='textarea-big'
