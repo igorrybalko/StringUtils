@@ -8,15 +8,20 @@ import {
  Row,
  Col,
 } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
-import { useLoadPage } from '../hooks';
+import { useLoadPage, useAppDispatch } from '../hooks';
+import { getPageContent } from '../store/slices/common';
 
 import AppSidebar from '../components/AppSidebar';
+import AppExample from '../components/AppExample';
+
+import PageData from '../classes/PageData';
 
 const { TextArea } = Input;
+const initPd = new PageData();
 
 const navList = [
  {
@@ -28,8 +33,24 @@ const navList = [
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(6))
+   .unwrap()
+   .then((res) => {
+    const { json } = res;
+    const example = JSON.parse(json);
+
+    if (example) {
+     setPd({ ...pd, example });
+    }
+   })
+   .catch(() => {});
+ }, []);
 
  const onFinish = (val: { text: string }) => {
   const str = JSON.stringify(val.text);
@@ -118,6 +139,7 @@ export default function JsonStringifyTextPage() {
        manner.
       </p>
      </div>
+     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />

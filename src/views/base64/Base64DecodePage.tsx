@@ -8,20 +8,39 @@ import {
  Col,
  Row,
 } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../../components/AppSidebar';
-import { useLoadPage } from '../../hooks';
+import AppExample from '../../components/AppExample';
+
+import { useLoadPage, useAppDispatch } from '../../hooks';
+import { getPageContent } from '../../store/slices/common';
+import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
+const initPd = new PageData;
 
 export default function Base64DecodePage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(4))
+   .unwrap()
+   .then((res) => {
+    const { json } = res;
+    const example = JSON.parse(json);
+
+    setPd({ ...pd, example });
+   })
+   .catch(() => {});
+ }, []);
 
  const navList = [
   {
@@ -126,7 +145,7 @@ export default function Base64DecodePage() {
        <a
         href='https://developer.mozilla.org/en-US/docs/Web/API/atob'
         target='_blank'
-        rel='nofollow'
+        rel='nofollow noreferrer'
        >
         atob()
        </a>{' '}
@@ -138,16 +157,20 @@ export default function Base64DecodePage() {
        used for encoding binary data in ASCII characters. This service proves
        beneficial for developers, data analysts, and anyone working with encoded
        data, as it simplifies the process of decoding and facilitates easy
-       interpretation of information. Its user-friendly interface and
-       accessibility make it a handy resource for individuals seeking a
-       hassle-free solution to decode <strong>Base64</strong> data without the
-       necessity for programming skills. Furthermore, this service can be
-       particularly useful in web development, data exchange, and debugging
-       scenarios, enhancing overall efficiency in handling encoded content.
-       Embracing such decoding services can save time and streamline workflows
-       for professionals dealing with encoded information on a regular basis.
+       interpretation of information.
+      </p>
+      <p>
+       Its user-friendly interface and accessibility make it a handy resource
+       for individuals seeking a hassle-free solution to decode{' '}
+       <strong>Base64</strong> data without the necessity for programming
+       skills. Furthermore, this service can be particularly useful in web
+       development, data exchange, and debugging scenarios, enhancing overall
+       efficiency in handling encoded content. Embracing such decoding services
+       can save time and streamline workflows for professionals dealing with
+       encoded information on a regular basis.
       </p>
      </div>
+     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />

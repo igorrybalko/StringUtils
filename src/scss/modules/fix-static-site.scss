@@ -35,6 +35,32 @@ a {
  min-height: 1px;
 }
 
+.ant-col-xs-12 {
+ display: block;
+ flex: 0 0 50%;
+ max-width: 50%;
+}
+
+main {
+ padding-top: 30px;
+}
+
+.ant-layout-content {
+  margin-bottom: 30px;
+}
+
+.anticon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+}
+
 @media (min-width: 576px) {
  .ant-col-sm-12 {
   display: block;

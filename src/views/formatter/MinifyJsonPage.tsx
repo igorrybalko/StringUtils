@@ -16,9 +16,12 @@ import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl, getPageContent } from '../../store/slices/common';
 
 import AppSidebar from '../../components/AppSidebar';
+import AppExample from '../../components/AppExample';
+
 import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
+const initPd = new PageData();
 
 const navList = [
  {
@@ -42,8 +45,6 @@ const navList = [
   url: '/json-stringify',
  },
 ];
-
-const initPd = new PageData;
 
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
@@ -194,29 +195,7 @@ export default function JsonStringifyTextPage() {
       className='info-text'
       dangerouslySetInnerHTML={{ __html: pd.content }}
      ></div>
-     <div className='info-text'>
-      <h3>{pd.example.title}</h3>
-      <Row gutter={[12, 0]}>
-       <Col xs={24} sm={24} md={12}>
-        <div className='mb-24'>
-         <label>{pd.example.input.label}</label>
-         <div
-          className='p-textarea'
-          dangerouslySetInnerHTML={{ __html: pd.example.input.value }}
-         ></div>
-        </div>
-       </Col>
-       <Col xs={24} sm={24} md={12}>
-        <div className='mb-24'>
-         <label>{pd.example.output.label}</label>
-         <div
-          className='p-textarea'
-          dangerouslySetInnerHTML={{ __html: pd.example.output.value }}
-         ></div>
-        </div>
-       </Col>
-      </Row>
-     </div>
+     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />

@@ -8,16 +8,18 @@ import {
  Col,
  Row,
 } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../../components/AppSidebar';
-import { useLoadPage } from '../../hooks';
+import AppExample from '../../components/AppExample';
+
+import { useLoadPage, useAppDispatch } from '../../hooks';
+import { getPageContent } from '../../store/slices/common';
 import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
-
 const initPd = new PageData;
 
 export default function Base64EncodePage() {
@@ -26,6 +28,19 @@ export default function Base64EncodePage() {
  const [pd, setPd] = useState(initPd);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(3))
+   .unwrap()
+   .then((res) => {
+    const { json } = res;
+    const example = JSON.parse(json);
+
+    setPd({ ...pd, example });
+   })
+   .catch(() => {});
+ }, []);
 
  const navList = [
   {
@@ -166,6 +181,7 @@ export default function Base64EncodePage() {
        intact when transmitted across different platforms.
       </p>
      </div>
+     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />

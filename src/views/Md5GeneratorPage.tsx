@@ -8,21 +8,40 @@ import {
  Row,
  Col,
 } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import md5 from 'md5';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppExample from '../components/AppExample';
+
+import { useLoadPage, useAppDispatch } from '../hooks';
+import { getPageContent } from '../store/slices/common';
+import PageData from '../classes/PageData';
 
 const { TextArea } = Input;
+const initPd = new PageData();
 
 export default function Md5GeneratorPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(5))
+   .unwrap()
+   .then((res) => {
+    const { json } = res;
+    const example = JSON.parse(json);
+
+    setPd({ ...pd, example });
+   })
+   .catch(() => {});
+ }, []);
 
  const navList = [
   {
@@ -100,22 +119,52 @@ export default function Md5GeneratorPage() {
       <h2>MD5 generator online</h2>
       <p>
        NPM package{' '}
-       <a href='https://www.npmjs.com/package/md5' target='_blank'>
+       <a
+        href='https://www.npmjs.com/package/md5'
+        target='_blank'
+        rel='nofollow noreferrer'
+       >
         MD5
        </a>{' '}
        is used for hashing.
       </p>
       <p>
-       <strong>MD5</strong> (Message Digest Algorithm 5) is a widely-used
-       cryptographic hash function that generates a 128-bit (16-byte) hash
-       value, typically represented as a 32-character hexadecimal number.
-       Originally designed for data integrity verification and digital
-       signatures, <strong>MD5</strong> has been extensively utilized in various
-       applications such as checksums for verifying data integrity, password
-       storage (though its use for this purpose is now discouraged due to
-       vulnerabilities), and digital signatures for software distribution.
+       MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash
+       function that produces a 128-bit (16-byte) hash value, typically
+       represented as a 32-character hexadecimal number. Developed by Ronald
+       Rivest in 1991, MD5 is designed to take an input (such as a file or
+       message) and generate a fixed-size output, regardless of the input size.
+       This makes it useful for creating unique digital fingerprints or
+       checksums of data.
+      </p>
+      <p>
+       MD5 is commonly used for verifying the integrity of files and data. When
+       downloading large files or software, an MD5 hash of the file is often
+       provided. Users can compute the hash of the downloaded file and compare
+       it with the provided hash to ensure the file hasn't been altered or
+       corrupted during transmission. It's also used in checksums for data
+       integrity in storage systems.
+      </p>
+      <p>
+       However, MD5 is no longer considered secure for cryptographic purposes
+       due to vulnerabilities that allow for collisions (two different inputs
+       producing the same hash). As a result, it is not recommended for tasks
+       like password hashing or cryptographic security, where stronger
+       algorithms like SHA-256 are preferred.
+      </p>
+      <p>
+       Despite its vulnerabilities, MD5 is still used in non-cryptographic
+       applications where quick hash computations are needed, such as in
+       database indexing, identifying duplicate files, and ensuring file
+       consistency across networks.
+      </p>
+      <p>
+       In short, while MD5 remains useful for data integrity verification and
+       non-security-related tasks, it should be avoided for secure cryptographic
+       applications due to its susceptibility to attacks.
       </p>
      </div>
+     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar list={navList} />
