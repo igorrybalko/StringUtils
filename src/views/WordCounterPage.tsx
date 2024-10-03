@@ -26,12 +26,7 @@ export default function WordCounterPage() {
 
  useLoadPage();
 
- const navList = [
-  {
-   title: 'Case Converter',
-   url: '/case-converter',
-  },
- ];
+ const navIds = [6];
 
  const countWords = (str: string) => {
   str = str.trim();
@@ -149,7 +144,7 @@ export default function WordCounterPage() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

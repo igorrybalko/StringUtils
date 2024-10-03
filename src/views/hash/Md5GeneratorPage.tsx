@@ -13,12 +13,12 @@ import md5 from 'md5';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
-import AppSidebar from '../components/AppSidebar';
-import AppExample from '../components/AppExample';
+import AppSidebar from '../../components/AppSidebar';
+import AppExample from '../../components/AppExample';
 
-import { useLoadPage, useAppDispatch } from '../hooks';
-import { getPageContent } from '../store/slices/common';
-import PageData from '../classes/PageData';
+import { useLoadPage, useAppDispatch } from '../../hooks';
+import { getPageContent } from '../../store/slices/common';
+import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
 const initPd = new PageData();
@@ -43,12 +43,7 @@ export default function Md5GeneratorPage() {
    .catch(() => {});
  }, []);
 
- const navList = [
-  {
-   title: 'UUID Generator',
-   url: '/uuid',
-  },
- ];
+ const navIds = [16, 9];
 
  const onFinish = (val: { text: string }) => {
   setResult(md5(val.text));
@@ -150,7 +145,7 @@ export default function Md5GeneratorPage() {
        due to vulnerabilities that allow for collisions (two different inputs
        producing the same hash). As a result, it is not recommended for tasks
        like password hashing or cryptographic security, where stronger
-       algorithms like SHA-256 are preferred.
+       algorithms like <a href="/sha-256">SHA-256</a> are preferred.
       </p>
       <p>
        Despite its vulnerabilities, MD5 is still used in non-cryptographic
@@ -167,7 +162,7 @@ export default function Md5GeneratorPage() {
      <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

@@ -22,24 +22,7 @@ import AppSidebar from '../../components/AppSidebar';
 import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl } from '../../store/slices/common';
 
-const navList = [
- {
-  title: 'HTML Formatter',
-  url: '/html-formatter',
- },
- {
-  title: 'Beautify JS',
-  url: '/beautify-js',
- },
- {
-  title: 'CSS Formatter',
-  url: '/beautify-css',
- },
- {
-  title: 'JSON Minify',
-  url: '/json-minify',
- },
-];
+const navIds = [12, 15, 14, 11];
 
 export default function MinifyCssPage() {
  useLoadPage();
@@ -253,7 +236,7 @@ export default function MinifyCssPage() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

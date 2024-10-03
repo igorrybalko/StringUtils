@@ -1,9 +1,28 @@
 import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 
-import { useLoadPage } from '../../hooks';
+import { useLoadPage, useAppDispatch } from '../../hooks';
+import { getPageContent } from '../../store/slices/common';
+import PageData from '../../classes/PageData';
+
+const initPd = new PageData();
 
 export default function DonatePage() {
+ const [pd, setPd] = useState(initPd);
+
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(8))
+   .unwrap()
+   .then((res) => {
+    const { title, content } = res;
+
+    setPd({ ...pd, content, title });
+   })
+   .catch(() => {});
+ }, []);
 
  return (
   <div className='info-text'>
@@ -16,31 +35,8 @@ export default function DonatePage() {
     />
    </Helmet>
 
-   <h1>Donate</h1>
-   <p>
-    Dear friend, if you want to financially support this project, you can do it
-    with cryptocurrency. Your help will be used to develop the project and pay
-    for hosting.
-   </p>
-   <h2>Crypto</h2>
-   <div className='sm-smaller'>
-    <div className='mb-24'>
-     <h4 className='m-0'>Bitcoin (BTC)</h4>
-     <div>bc1qwfcjmu2ngme8p63uzhjmll9akv35gvy95wqhsg</div>
-    </div>
-    <div className='mb-24'>
-     <h4 className='m-0'>Ethereum (ETH)</h4>
-     <div>0xd46fca07b2bfb16ee0014048f9264820026fbc1d</div>
-    </div>
-    <div className='mb-24'>
-     <h4 className='m-0'>Litecoin (LTC)</h4>
-     <div>ltc1qx0srqpp9dpyf8xlrsexht8fcva5p4tkw0c0e7m</div>
-    </div>
-    <div className='mb-24'>
-     <h4 className='m-0'>USDT (ERC20)</h4>
-     <div>0xd46fca07b2bfb16ee0014048f9264820026fbc1d</div>
-    </div>
-   </div>
+   <h1>{pd.title}</h1>
+   <div dangerouslySetInnerHTML={{ __html: pd.content }}></div>
   </div>
  );
 }

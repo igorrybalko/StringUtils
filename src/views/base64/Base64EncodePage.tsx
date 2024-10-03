@@ -20,7 +20,7 @@ import { getPageContent } from '../../store/slices/common';
 import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
-const initPd = new PageData;
+const initPd = new PageData();
 
 export default function Base64EncodePage() {
  const [result, setResult] = useState('');
@@ -42,16 +42,7 @@ export default function Base64EncodePage() {
    .catch(() => {});
  }, []);
 
- const navList = [
-  {
-   title: 'Base64 Decode',
-   url: '/base64-decode',
-  },
-  {
-   title: 'Image to Base64',
-   url: '/img-to-base64',
-  },
- ];
+ const navIds = [2, 3];
 
  function b64EncodeUnicode(str: string) {
   // first we use encodeURIComponent to get percent-encoded UTF-8,
@@ -184,7 +175,7 @@ export default function Base64EncodePage() {
      <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

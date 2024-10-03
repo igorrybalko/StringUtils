@@ -23,24 +23,7 @@ import AppSidebar from '../../components/AppSidebar';
 import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl } from '../../store/slices/common';
 
-const navList = [
- {
-  title: 'HTML Formatter',
-  url: '/html-formatter',
- },
- {
-  title: 'CSS Formatter',
-  url: '/beautify-css',
- },
- {
-  title: 'Minify CSS',
-  url: '/minify-css',
- },
- {
-  title: 'JSON Minify',
-  url: '/json-minify',
- },
-];
+const navIds = [12, 14, 13, 11];
 
 export default function BeautifyJsPage() {
  useLoadPage();
@@ -257,7 +240,7 @@ export default function BeautifyJsPage() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

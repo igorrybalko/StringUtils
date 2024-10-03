@@ -7,13 +7,16 @@ import HomePage from '../views/common/HomePage';
 import Base64EncodePage from '../views/base64/Base64EncodePage';
 import Base64DecodePage from '../views/base64/Base64DecodePage';
 import ImgToBase64Page from '../views/base64/ImgToBase64Page';
-import Md5GeneratorPage from '../views/Md5GeneratorPage';
+
 import TranslitUrlPage from '../views/TranslitUrlPage';
 import CaseConverterPage from '../views/CaseConverterPage';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
-import UuidPage from '../views/UuidPage';
+import UuidPage from '../views/hash/UuidPage';
 import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
+
+import Md5GeneratorPage from '../views/hash/Md5GeneratorPage';
+const Sha256Page = lazy(() => import('../views/hash/Sha256Page'));
 
 const NoMatch = lazy(() => import('../views/common/NoMatch'));
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
@@ -51,6 +54,11 @@ const routes = createBrowserRouter([
     path: 'md5-generator',
     element: <Md5GeneratorPage />,
     id: 'md5-generator',
+   },
+   {
+    path: 'sha-256',
+    element: <Sha256Page />,
+    id: 'sha-256',
    },
    {
     path: 'translit-url',

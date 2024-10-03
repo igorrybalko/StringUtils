@@ -20,7 +20,7 @@ import { getPageContent } from '../../store/slices/common';
 import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
-const initPd = new PageData;
+const initPd = new PageData();
 
 export default function Base64DecodePage() {
  const [result, setResult] = useState('');
@@ -42,16 +42,7 @@ export default function Base64DecodePage() {
    .catch(() => {});
  }, []);
 
- const navList = [
-  {
-   title: 'Base64 Encode',
-   url: '/base64-encode',
-  },
-  {
-   title: 'Image to Base64',
-   url: '/img-to-base64',
-  },
- ];
+ const navIds = [1, 3];
 
  function b64DecodeUnicode(str: string) {
   // Going backwards: from bytestream, to percent-encoding, to original string.
@@ -173,7 +164,7 @@ export default function Base64DecodePage() {
      <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

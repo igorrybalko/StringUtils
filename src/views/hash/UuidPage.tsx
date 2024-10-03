@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet';
 import { Button, notification, Divider, Row, Col } from 'antd';
 import copy from 'copy-to-clipboard';
 
-import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../../components/AppSidebar';
+import { useLoadPage } from '../../hooks';
 
 export default function UuidPage() {
  const [uuid, setUuid] = useState('');
@@ -12,12 +12,7 @@ export default function UuidPage() {
 
  useLoadPage();
 
- const navList = [
-  {
-   title: 'MD5 Hash Generator',
-   url: '/md5-generator',
-  },
- ];
+ const navIds = [4, 16];
 
  useEffect(() => {
   generateUuid();
@@ -61,7 +56,7 @@ export default function UuidPage() {
       </Button>
       <Divider />
       <div className='info-text'>
-      <h2>What is UUID V4?</h2>
+       <h2>What is UUID V4?</h2>
        <p>
         UUID (Universally Unique Identifier) version 4 is a randomly generated
         identifier composed of 32 hexadecimal digits, typically displayed in the
@@ -94,7 +89,7 @@ export default function UuidPage() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

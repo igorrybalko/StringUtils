@@ -34,12 +34,7 @@ export default function CaseConverterPage() {
 
  useLoadPage();
 
- const navList = [
-  {
-   title: 'Word/Character Counter',
-   url: '/word-counter',
-  },
- ];
+ const navIds = [7];
 
  type ConvertOption = 'lc' | 'uc' | 'cc' | 'sc';
 
@@ -174,7 +169,7 @@ export default function CaseConverterPage() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

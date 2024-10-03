@@ -23,28 +23,7 @@ import PageData from '../../classes/PageData';
 const { TextArea } = Input;
 const initPd = new PageData();
 
-const navList = [
- {
-  title: 'HTML Formatter',
-  url: '/html-formatter',
- },
- {
-  title: 'Beautify JS',
-  url: '/beautify-js',
- },
- {
-  title: 'CSS Formatter',
-  url: '/beautify-css',
- },
- {
-  title: 'Minify CSS',
-  url: '/minify-css',
- },
- {
-  title: 'JSON Stringify',
-  url: '/json-stringify',
- },
-];
+const navIds = [12, 15, 14, 13, 10];
 
 export default function JsonStringifyTextPage() {
  const [result, setResult] = useState('');
@@ -198,7 +177,7 @@ export default function JsonStringifyTextPage() {
      <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

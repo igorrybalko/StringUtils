@@ -30,16 +30,7 @@ export default function ImgToBase64Page() {
 
  useLoadPage();
 
- const navList = [
-  {
-   title: 'Base64 Encode',
-   url: '/base64-encode',
-  },
-  {
-   title: 'Base64 Decode',
-   url: '/base64-decode',
-  },
- ];
+ const navIds = [1, 2];
 
  const converter = {
   simple(str: string) {
@@ -107,7 +98,10 @@ export default function ImgToBase64Page() {
     <title>
      Image to Base64 Converter Online | Base64 Image Encoder (Free)
     </title>
-    <meta name='description' content='Convert an image to Base64 online. Conver jpg, png, svg, webp to Base64' />
+    <meta
+     name='description'
+     content='Convert an image to Base64 online. Conver jpg, png, svg, webp to Base64'
+    />
     <link
      rel='canonical'
      href={import.meta.env.VITE_SITE_URL + '/img-to-base64'}
@@ -204,7 +198,7 @@ export default function ImgToBase64Page() {
      </div>
     </Col>
     <Col xs={24} sm={24} md={6}>
-     <AppSidebar list={navList} />
+     <AppSidebar ids={navIds} />
     </Col>
    </Row>
   </div>

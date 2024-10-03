@@ -35,7 +35,7 @@ export default function HomePage() {
     <h2>About Web Tools</h2>
     <p>
      An online service offering tools like Base64 encoding/decoding, MD5
-     generation, UUID generation (Version 4), JSON minification, HTML
+     generation, SHA-256 generation, UUID generation (Version 4), JSON minification, HTML
      formatting, CSS and JavaScript beautification/minification, word/chapter
      counting, case conversion, UNIX timestamp generation, and URL
      transliteration can be incredibly useful for a wide range of users,
