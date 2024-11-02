@@ -82,6 +82,10 @@ li.ant-list-item,
  margin-bottom: 10px;
 }
 
+.mb-20 {
+  margin-bottom: 20px;
+ }
+
 .mb-24 {
  margin-bottom: 24px;
 }
@@ -196,6 +200,10 @@ img {
 
 .top-menu {
  column-gap: 20px;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 400px) {

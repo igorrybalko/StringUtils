@@ -3,10 +3,15 @@ import { Layout } from 'antd';
 
 import AppNotif from './AppNotif';
 import AppCount from './AppCount';
+import AppCookieInfo from './AppCookieInfo';
+
+import { useAppSelector } from '../hooks';
 
 const { Footer } = Layout;
 
 export default function AppFooter() {
+ const cookieAgree = useAppSelector((state) => state.common.cookieAgree);
+
  return (
   <Footer>
    <div className='wrapper'>
@@ -16,10 +21,11 @@ export default function AppFooter() {
 
      <div>
       <Link to='/privacy-policy'>Privacy Policy</Link>
-      <AppCount />
+      {cookieAgree === '1' && <AppCount />}
      </div>
     </div>
    </div>
+   {!cookieAgree && <AppCookieInfo />}
    <AppNotif />
   </Footer>
  );

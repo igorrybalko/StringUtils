@@ -37,6 +37,7 @@ const initialState = {
  darkTheme: false,
  notifFlag: false,
  errorMessage: '',
+ cookieAgree: '',
 };
 
 export const commonSlice = createSlice({
@@ -50,9 +51,12 @@ export const commonSlice = createSlice({
    state.notifFlag = !state.notifFlag;
    state.errorMessage = payload.message;
   },
+  setCookieAgree(state, { payload }: { payload: string }) {
+   state.cookieAgree = payload;
+  },
  },
 });
 
-export const { toggleTheme, showNotif } = commonSlice.actions;
+export const { toggleTheme, showNotif, setCookieAgree } = commonSlice.actions;
 
 export default commonSlice.reducer;

@@ -18,7 +18,7 @@ import migrations from './migrations';
 const persistConfig = {
  key: 'root',
  storage,
- version: 1,
+ version: 2,
  migrate: createMigrate(migrations, { debug: false }),
 };
 
