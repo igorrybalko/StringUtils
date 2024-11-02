@@ -1,11 +1,13 @@
 import { Button, Flex } from 'antd';
 import { Link } from 'react-router-dom';
+import Cookie from 'cookie-universal';
 
 import { useAppDispatch } from '../hooks';
 import { setCookieAgree } from '../store/slices/common';
 
 import '../scss/components/AppCookieInfo.scss';
 
+const cookies = Cookie();
 
 export default function AppCookieInfo() {
  const dispatch = useAppDispatch();
@@ -19,11 +21,25 @@ export default function AppCookieInfo() {
   );
 
   const head = document.getElementsByTagName('head')[0];
+
   head.prepend(gScript);
+
+  cookies.set('cookieAgree', 1, {
+   path: '/',
+   sameSite: 'strict',
+   maxAge: 86400 * 365,
+  });
+
   dispatch(setCookieAgree('1'));
  }
 
  function decline() {
+  cookies.set('cookieAgree', 0, {
+   path: '/',
+   sameSite: 'strict',
+   maxAge: 86400 * 365,
+  });
+
   dispatch(setCookieAgree('0'));
  }
 

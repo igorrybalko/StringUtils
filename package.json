@@ -16,6 +16,7 @@
     "ace-builds": "^1.35.2",
     "antd": "^5.19.1",
     "axios": "^1.7.2",
+    "cookie-universal": "^2.2.2",
     "copy-to-clipboard": "^3.3.3",
     "csso": "^5.0.5",
     "htmlfy": "^0.2.1",
