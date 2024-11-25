@@ -5,7 +5,7 @@ import Cookie from 'cookie-universal';
 
 import AppNotif from './AppNotif';
 import AppCount from './AppCount';
-import AppCookieInfo from './AppCookieInfo';
+//import AppCookieInfo from './AppCookieInfo';
 
 import { useAppSelector } from '../hooks';
 
@@ -39,11 +39,12 @@ export default function AppFooter() {
 
      <div>
       <Link to='/privacy-policy'>Privacy Policy</Link>
-      {cookieAgree === '1' && <AppCount />}
+      {/* {cookieAgree === '1' && <AppCount />} */}
+      <AppCount />
      </div>
     </div>
    </div>
-   {!cookieAgree && <AppCookieInfo />}
+   {/* {!cookieAgree && <AppCookieInfo />} */}
    <AppNotif />
   </Footer>
  );
