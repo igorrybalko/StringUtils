@@ -7,19 +7,31 @@ import {
  Table,
  Tag,
  Space,
+ Row,
+ Col,
 } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import chunk from 'lodash.chunk';
 import { Helmet } from 'react-helmet';
 
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../components/AppSidebar';
+
+import { useLoadPage, useAppDispatch } from '../hooks';
+import { getPageContent } from '../store/slices/common';
+import PageData from '../classes/PageData';
+
+const initPd = new PageData();
 
 export default function TranslitUrlPage() {
  const [result, setResult] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ const navIds = [17];
 
  const columns = [
   {
@@ -250,6 +262,17 @@ export default function TranslitUrlPage() {
   setResult('');
  };
 
+ useEffect(() => {
+  dispatch(getPageContent(10))
+   .unwrap()
+   .then((res) => {
+    const { title, content } = res;
+
+    setPd({ ...pd, content, title });
+   })
+   .catch(() => {});
+ }, []);
+
  return (
   <div>
    <Helmet>
@@ -264,67 +287,63 @@ export default function TranslitUrlPage() {
     />
    </Helmet>
    {contextHolder}
-   <h1>Translit URL Online</h1>
-   <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
-    <Form.Item
-     name='text'
-     rules={[{ required: true, message: 'Please enter data' }]}
-     label='Enter text'
-    >
-     <Input placeholder='Type your text...' spellCheck='false' />
-    </Form.Item>
+   <Row gutter={[24, 0]}>
+    <Col xs={24} sm={24} md={18}>
+     <h1>{pd.title}</h1>
+     <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
+      <Form.Item
+       name='text'
+       rules={[{ required: true, message: 'Please enter data' }]}
+       label='Enter text'
+      >
+       <Input placeholder='Type your text...' spellCheck='false' />
+      </Form.Item>
 
-    <Form.Item>
-     <Space>
-      <Button type='primary' htmlType='submit'>
-       Submit
-      </Button>
-      <Button htmlType='reset' onClick={onReset}>
-       Reset
-      </Button>
-     </Space>
-    </Form.Item>
-   </Form>
-   <Divider />
-   <div className='caption'>Result:</div>
-   <div className='p-input mb-24'>{result}</div>
-   <Button type='primary' onClick={copyText}>
-    Copy
-   </Button>
-   <Divider />
+      <Form.Item>
+       <Space>
+        <Button type='primary' htmlType='submit'>
+         Submit
+        </Button>
+        <Button htmlType='reset' onClick={onReset}>
+         Reset
+        </Button>
+       </Space>
+      </Form.Item>
+     </Form>
+     <Divider />
+     <div className='caption'>Result:</div>
+     <div className='p-input mb-24'>{result}</div>
+     <Button type='primary' onClick={copyText}>
+      Copy
+     </Button>
+     <Divider />
 
-   <div className='info-text'>
-    <h2>About URL Transliteration</h2>
-    An online service for transliterating URLs from Cyrillic to Latin characters
-    proves highly beneficial for individuals seeking to optimize their web
-    presence. This tool facilitates the conversion of non-Latin characters in
-    URLs, making them more accessible and user-friendly. Particularly useful for
-    businesses targeting diverse audiences, bloggers, and website owners, this
-    service ensures that their web addresses are easily readable and memorable
-    across different languages. Transliterating URLs is crucial for search
-    engine optimization (SEO) as it enhances the visibility of the website in
-    search results, especially when users employ Latin-based search queries. By
-    adopting this service, individuals can improve their website's{' '}
-    <strong>SEO</strong> performance, increase traffic, and ensure a seamless
-    online experience for a broader audience.
-   </div>
-   <Divider />
-   <div className='info-text'>
-    <h3>Rules:</h3>
+     <div
+      className='info-text'
+      dangerouslySetInnerHTML={{ __html: pd.content }}
+     ></div>
+     <Divider />
+     <div className='info-text'>
+      <h3>Rules:</h3>
 
-    <div className='mb-24'>
-     <Tag>-</Tag>
-     <Tag>_</Tag>
-     <Tag>space</Tag>
-     <Tag>+</Tag>
-     are converted to <Tag>-</Tag>
-    </div>
-    <div className='mb-24 su-table'>
-     <Table dataSource={dataSource} columns={columns} pagination={false} />
-    </div>
+      <div className='mb-24'>
+       <Tag>-</Tag>
+       <Tag>_</Tag>
+       <Tag>space</Tag>
+       <Tag>+</Tag>
+       are converted to <Tag>-</Tag>
+      </div>
+      <div className='mb-24 su-table'>
+       <Table dataSource={dataSource} columns={columns} pagination={false} />
+      </div>
 
-    <div>Other characters are ignored</div>
-   </div>
+      <div>Other characters are ignored</div>
+     </div>
+    </Col>
+    <Col xs={24} sm={24} md={6}>
+     <AppSidebar ids={navIds} />
+    </Col>
+   </Row>
   </div>
  );
 }

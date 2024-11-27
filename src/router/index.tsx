@@ -8,7 +8,9 @@ import Base64EncodePage from '../views/base64/Base64EncodePage';
 import Base64DecodePage from '../views/base64/Base64DecodePage';
 import ImgToBase64Page from '../views/base64/ImgToBase64Page';
 
-import TranslitUrlPage from '../views/TranslitUrlPage';
+const TranslitUrlPage = lazy(() => import('../views/TranslitUrlPage'));
+const UrlEncodePage = lazy(() => import('../views/string/UrlEncodePage'));
+
 import CaseConverterPage from '../views/CaseConverterPage';
 import WordCounterPage from '../views/WordCounterPage';
 import UnixtimestampPage from '../views/UnixtimestampPage';
@@ -124,6 +126,11 @@ const routes = createBrowserRouter([
     path: 'donate',
     element: <DonatePage />,
     id: 'donate',
+   },
+   {
+    path: 'url-encode',
+    element: <UrlEncodePage />,
+    id: 'url-encode',
    },
    { path: '*', element: <NoMatch /> },
   ],

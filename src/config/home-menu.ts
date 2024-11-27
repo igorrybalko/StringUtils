@@ -1,5 +1,10 @@
 const list = [
  {
+  url: '/url-encode',
+  title: 'URL Encode',
+  id: 17,
+ },
+ {
   url: '/base64-encode',
   title: 'Base64 Encode',
   id: 1,
