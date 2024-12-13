@@ -5,6 +5,11 @@ const list = [
   id: 17,
  },
  {
+  url: '/url-decode',
+  title: 'URL Decode',
+  id: 18,
+ },
+ {
   url: '/base64-encode',
   title: 'Base64 Encode',
   id: 1,

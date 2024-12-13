@@ -32,7 +32,7 @@ export default function TranslitUrlPage() {
  const dispatch = useAppDispatch();
 
  useEffect(() => {
-  dispatch(getPageContent(11))
+  dispatch(getPageContent(12))
    .unwrap()
    .then((res) => {
     const { title, content, json } = res;
@@ -43,10 +43,10 @@ export default function TranslitUrlPage() {
    .catch(() => {});
  }, []);
 
- const navIds = [18, 5];
+ const navIds = [17, 5];
 
  const onFinish = (val: { text: string }) => {
-  const str = encodeURIComponent(val.text);
+  const str = decodeURIComponent(val.text);
   setResult(str);
  };
 
@@ -66,14 +66,14 @@ export default function TranslitUrlPage() {
  return (
   <div>
    <Helmet>
-    <title>URL-encode String Online Tool</title>
+    <title>URL-decode String Online Tool</title>
     <meta
      name='description'
-     content='Simple online service for encoding URL strings. Free and without registration'
+     content='Simple online service for decoding URL strings. Free and without registration'
     />
     <link
      rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/url-encode'}
+     href={import.meta.env.VITE_SITE_URL + '/url-decode'}
     />
    </Helmet>
    {contextHolder}

@@ -10,6 +10,7 @@ import ImgToBase64Page from '../views/base64/ImgToBase64Page';
 
 const TranslitUrlPage = lazy(() => import('../views/TranslitUrlPage'));
 const UrlEncodePage = lazy(() => import('../views/string/UrlEncodePage'));
+const UrlDecodePage = lazy(() => import('../views/string/UrlDecodePage'));
 
 import CaseConverterPage from '../views/CaseConverterPage';
 import WordCounterPage from '../views/WordCounterPage';
@@ -131,6 +132,11 @@ const routes = createBrowserRouter([
     path: 'url-encode',
     element: <UrlEncodePage />,
     id: 'url-encode',
+   },
+   {
+    path: 'url-decode',
+    element: <UrlDecodePage />,
+    id: 'url-decode',
    },
    { path: '*', element: <NoMatch /> },
   ],
