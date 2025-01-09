@@ -33,6 +33,19 @@ export const getPageContent = createAsyncThunk(
  }
 );
 
+export const getHtpasswd = createAsyncThunk(
+ 'common/getHtpasswd',
+ async (password: string, thunkAPI) => {
+  try {
+   const result = await apiCommon.getHtpasswd(password);
+
+   return result;
+  } catch (e) {
+   return thunkAPI.rejectWithValue(e);
+  }
+ }
+);
+
 const initialState = {
  darkTheme: false,
  notifFlag: false,

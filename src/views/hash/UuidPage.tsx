@@ -12,7 +12,7 @@ export default function UuidPage() {
 
  useLoadPage();
 
- const navIds = [4, 16];
+ const navIds = [4, 16, 19];
 
  useEffect(() => {
   generateUuid();

@@ -53,7 +53,7 @@ export default function Sha256Page() {
    .catch(() => {});
  }, []);
 
- const navIds = [4, 9];
+ const navIds = [4, 19, 9];
 
  const onFinish = async (val: { text: string }) => {
   const hash = await getHash(val.text);

@@ -25,6 +25,11 @@ const list = [
   id: 3,
  },
  {
+  url: '/htpasswd',
+  title: 'Generator htpasswd',
+  id: 19,
+ },
+ {
   url: '/md5-generator',
   title: 'MD5 Hash Generator',
   id: 4,

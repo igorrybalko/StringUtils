@@ -9,18 +9,15 @@ import {
  Col,
 } from 'antd';
 import { useState, useEffect } from 'react';
-import md5 from 'md5';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
 import AppSidebar from '../../components/AppSidebar';
-import AppExample from '../../components/AppExample';
 
 import { useLoadPage, useAppDispatch } from '../../hooks';
-import { getPageContent } from '../../store/slices/common';
+import { getPageContent, getHtpasswd } from '../../store/slices/common';
 import PageData from '../../classes/PageData';
 
-const { TextArea } = Input;
 const initPd = new PageData();
 
 export default function Md5GeneratorPage() {
@@ -32,21 +29,24 @@ export default function Md5GeneratorPage() {
  const dispatch = useAppDispatch();
 
  useEffect(() => {
-  dispatch(getPageContent(5))
+  dispatch(getPageContent(13))
    .unwrap()
    .then((res) => {
-    const { json, content, title } = res;
-    const example = JSON.parse(json);
+    const { subtitle, content, title } = res;
 
-    setPd({ ...pd, example, content, title });
-   })
-   .catch(() => {});
+    setPd({ ...pd, content, title, subtitle });
+   });
  }, []);
 
- const navIds = [16, 19, 9];
+ const navIds = [4, 16, 9];
 
- const onFinish = (val: { text: string }) => {
-  setResult(md5(val.text));
+ const onFinish = (val: { username: string; password: string }) => {
+  dispatch(getHtpasswd(val.password))
+   .unwrap()
+   .then((res) => {
+    const result = val.username.trim() + ':' + res.htpasswd;
+    setResult(result);
+   });
  };
 
  function copyText() {
@@ -65,31 +65,37 @@ export default function Md5GeneratorPage() {
  return (
   <div>
    <Helmet>
-    <title>MD5 Generator Online Tool</title>
+    <title>Htpasswd Generator Online</title>
     <meta
      name='description'
-     content='Online tool for generate MD5 hash. MD5 encryption online for free'
+     content='Online tool for generating (creating) a hashed password for htpasswd'
     />
-    <link
-     rel='canonical'
-     href={import.meta.env.VITE_SITE_URL + '/md5-generator'}
-    />
+    <link rel='canonical' href={import.meta.env.VITE_SITE_URL + '/htpasswd'} />
    </Helmet>
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
      <h1>{pd.title}</h1>
+     <p>{pd.subtitle}</p>
      <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
       <Form.Item
-       name='text'
-       rules={[{ required: true, message: 'Please enter data' }]}
-       label='Enter text'
+       name='username'
+       rules={[
+        { required: true, message: 'The field is required', whitespace: true },
+       ]}
+       label='Username'
       >
-       <TextArea
-        className='textarea'
-        spellCheck='false'
-        placeholder='Type your text...'
-       />
+       <Input spellCheck='false' placeholder='Type your username...' />
+      </Form.Item>
+
+      <Form.Item
+       name='password'
+       rules={[
+        { required: true, message: 'The field is required', whitespace: true },
+       ]}
+       label='Password'
+      >
+       <Input.Password spellCheck='false' placeholder='Type your password...' />
       </Form.Item>
 
       <Form.Item>
@@ -114,7 +120,6 @@ export default function Md5GeneratorPage() {
       className='info-text'
       dangerouslySetInnerHTML={{ __html: pd.content }}
      ></div>
-     <AppExample example={pd.example} />
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar ids={navIds} />

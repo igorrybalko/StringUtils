@@ -35,7 +35,7 @@ export default function AppFooter() {
    <div className='wrapper'>
     <div className='text-center f-sm mb-10'>Convert your data as you want</div>
     <div className='d-flex jc-sb'>
-     <div>&copy; 2024 StringUtils</div>
+     <div>&copy; 2025 StringUtils</div>
 
      <div>
       <Link to='/privacy-policy'>Privacy Policy</Link>

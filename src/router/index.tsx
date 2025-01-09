@@ -6,7 +6,7 @@ import AppLayout from '../layouts/AppLayout';
 import HomePage from '../views/common/HomePage';
 import Base64EncodePage from '../views/base64/Base64EncodePage';
 import Base64DecodePage from '../views/base64/Base64DecodePage';
-import ImgToBase64Page from '../views/base64/ImgToBase64Page';
+const ImgToBase64Page = lazy(() => import('../views/base64/ImgToBase64Page'));
 
 const TranslitUrlPage = lazy(() => import('../views/TranslitUrlPage'));
 const UrlEncodePage = lazy(() => import('../views/string/UrlEncodePage'));
@@ -20,6 +20,7 @@ import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
 
 import Md5GeneratorPage from '../views/hash/Md5GeneratorPage';
 const Sha256Page = lazy(() => import('../views/hash/Sha256Page'));
+const HtpasswdPage = lazy(() => import('../views/hash/HtpasswdPage'));
 
 const NoMatch = lazy(() => import('../views/common/NoMatch'));
 const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
@@ -137,6 +138,11 @@ const routes = createBrowserRouter([
     path: 'url-decode',
     element: <UrlDecodePage />,
     id: 'url-decode',
+   },
+   {
+    path: 'htpasswd',
+    element: <HtpasswdPage />,
+    id: 'htpasswd',
    },
    { path: '*', element: <NoMatch /> },
   ],

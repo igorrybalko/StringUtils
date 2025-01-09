@@ -22,7 +22,7 @@ import { useLoadPage } from '../../hooks';
 
 const { Option } = Select;
 
-type ConvertType = 'simple' | 'dataUri';
+type ConvertType = 'simple' | 'dataUri' | 'toCss' | 'toHtml';
 
 export default function ImgToBase64Page() {
  const [result, setResult] = useState('');
@@ -39,6 +39,12 @@ export default function ImgToBase64Page() {
   },
   dataUri(str: string) {
    return str;
+  },
+  toCss(str: string) {
+   return 'background-image: url(' + str + ');';
+  },
+  toHtml(str: string) {
+   return '<img src="' + str + '" alt="" />';
   },
  };
 
@@ -141,6 +147,8 @@ export default function ImgToBase64Page() {
        <Select>
         <Option value='simple'>Only Base64</Option>
         <Option value='dataUri'>Data URI</Option>
+        <Option value='toCss'>CSS Background Source</Option>
+        <Option value='toHtml'>HTML Image Code</Option>
        </Select>
       </Form.Item>
 
