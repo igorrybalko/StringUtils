@@ -15,9 +15,11 @@ import type { UploadFile } from 'antd';
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined, CopyOutlined } from '@ant-design/icons';
 
 import AppSidebar from '../../components/AppSidebar';
+import DownloadBtn from '../../components/DowloadBtn';
+
 import { useLoadPage } from '../../hooks';
 
 const { Option } = Select;
@@ -26,6 +28,7 @@ type ConvertType = 'simple' | 'dataUri' | 'toCss' | 'toHtml';
 
 export default function ImgToBase64Page() {
  const [result, setResult] = useState('');
+ const [loading, setLoading] = useState(false);
  const [api, contextHolder] = notification.useNotification();
 
  useLoadPage();
@@ -50,6 +53,8 @@ export default function ImgToBase64Page() {
 
  const onFinish = (val: { upload: UploadFile[]; format: ConvertType }) => {
   if (val.upload && val.upload[0]) {
+   setLoading(true);
+
    try {
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -57,11 +62,13 @@ export default function ImgToBase64Page() {
      if (rawStr) {
       const str = converter[val.format](rawStr as string);
       setResult(str);
+      setLoading(false);
      }
     };
     reader.readAsDataURL(val.upload[0].originFileObj as File);
    } catch (err) {
     console.log(err);
+    setLoading(false);
     api.error({
      message: 'Error',
      description: '',
@@ -154,7 +161,7 @@ export default function ImgToBase64Page() {
 
       <Form.Item>
        <Space>
-        <Button type='primary' htmlType='submit'>
+        <Button type='primary' htmlType='submit' loading={loading}>
          Encode image to Base64
         </Button>
         <Button htmlType='reset' onClick={onReset}>
@@ -166,9 +173,12 @@ export default function ImgToBase64Page() {
      <Divider />
      <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
-     <Button type='primary' onClick={copyText}>
-      Copy
-     </Button>
+     <Space>
+      <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
+       Copy
+      </Button>
+      <DownloadBtn name='base64.txt' content={result} />
+     </Space>
      <Divider />
      <div className='info-text'>
       <h2>Encode your image to Base64 online</h2>

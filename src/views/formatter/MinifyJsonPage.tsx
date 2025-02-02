@@ -12,11 +12,14 @@ import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 
+import { CopyOutlined } from '@ant-design/icons';
+
 import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl, getPageContent } from '../../store/slices/common';
 
 import AppSidebar from '../../components/AppSidebar';
 import AppExample from '../../components/AppExample';
+import DownloadBtn from '../../components/DowloadBtn';
 
 import PageData from '../../classes/PageData';
 
@@ -166,9 +169,12 @@ export default function JsonStringifyTextPage() {
      <Divider />
      <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
-     <Button type='primary' onClick={copyText}>
-      Copy
-     </Button>
+     <Space>
+      <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
+       Copy
+      </Button>
+      <DownloadBtn name='file.json' content={result} />
+     </Space>
      <Divider />
      <div
       className='info-text'

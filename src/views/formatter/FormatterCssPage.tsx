@@ -15,12 +15,15 @@ import { useState, useRef } from 'react';
 import * as beautify from 'simply-beautiful';
 import AceEditor from 'react-ace';
 import copy from 'copy-to-clipboard';
+import { CopyOutlined } from '@ant-design/icons';
 
 import 'ace-builds/src-noconflict/mode-css';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
 import AppSidebar from '../../components/AppSidebar';
+import DownloadBtn from '../../components/DowloadBtn';
+
 import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl } from '../../store/slices/common';
 
@@ -219,9 +222,12 @@ export default function FormatterCssPage() {
        key={'two' + resetKey}
       />
      </div>
-     <Button type='primary' onClick={copyText}>
-      Copy
-     </Button>
+     <Space>
+      <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
+       Copy
+      </Button>
+      <DownloadBtn name='file.css' content={result} />
+     </Space>
      <Divider />
 
      <div className='info-text'>

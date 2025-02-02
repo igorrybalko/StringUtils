@@ -14,12 +14,15 @@ import { useState, useRef } from 'react';
 import jsBeautify from 'js-beautify';
 import AceEditor from 'react-ace';
 import copy from 'copy-to-clipboard';
+import { CopyOutlined } from '@ant-design/icons';
 
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
 import AppSidebar from '../../components/AppSidebar';
+import DownloadBtn from '../../components/DowloadBtn';
+
 import { useLoadPage, useAppDispatch } from '../../hooks';
 import { getStingByUrl } from '../../store/slices/common';
 
@@ -206,9 +209,12 @@ export default function BeautifyJsPage() {
        key={'two' + resetKey}
       />
      </div>
-     <Button type='primary' onClick={copyText}>
-      Copy
-     </Button>
+     <Space>
+      <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
+       Copy
+      </Button>
+      <DownloadBtn name='file.js' content={result} />
+     </Space>
      <Divider />
      <div className='info-text'>
       <h2>JS Beautifier</h2>
