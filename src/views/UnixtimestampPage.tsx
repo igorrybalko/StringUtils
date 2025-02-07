@@ -12,6 +12,7 @@ import {
 import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
+import { CopyOutlined } from '@ant-design/icons';
 
 import AppUtFullDate from '../components/AppUtFullDate';
 import { useLoadPage } from '../hooks';
@@ -132,7 +133,7 @@ export default function UnixtimestampPage() {
 
     <p>Seconds since Jan 01 1970</p>
 
-    <Button type='primary' onClick={copyTimestamp}>
+    <Button type='primary' onClick={copyTimestamp} icon={<CopyOutlined />}>
      Copy Timestamp
     </Button>
    </div>

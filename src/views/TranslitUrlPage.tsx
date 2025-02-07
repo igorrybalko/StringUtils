@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import chunk from 'lodash.chunk';
 import { Helmet } from 'react-helmet';
+import { CopyOutlined } from '@ant-design/icons';
 
 import AppSidebar from '../components/AppSidebar';
 
@@ -313,7 +314,7 @@ export default function TranslitUrlPage() {
      <Divider />
      <div className='caption'>Result:</div>
      <div className='p-input mb-24'>{result}</div>
-     <Button type='primary' onClick={copyText}>
+     <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
       Copy
      </Button>
      <Divider />

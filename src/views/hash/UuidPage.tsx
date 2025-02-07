@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Button, notification, Divider, Row, Col } from 'antd';
 import copy from 'copy-to-clipboard';
+import { CopyOutlined } from '@ant-design/icons';
 
 import AppSidebar from '../../components/AppSidebar';
 import { useLoadPage } from '../../hooks';
@@ -46,7 +47,7 @@ export default function UuidPage() {
      <h1>UUID Generator Online (Version-4)</h1>
      <div className='text-center mb-30 p-input'>{uuid}</div>
      <div className='mb-30'>
-      <Button type='primary' onClick={copyText}>
+      <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
        Copy UUID
       </Button>
      </div>

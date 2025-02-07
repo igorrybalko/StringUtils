@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
+import { CopyOutlined } from '@ant-design/icons';
 
 import AppSidebar from '../components/AppSidebar';
 import { useLoadPage } from '../hooks';
@@ -130,7 +131,7 @@ export default function CaseConverterPage() {
      <Divider />
      <div className='caption'>Result:</div>
      <div className='p-textarea mb-24'>{result}</div>
-     <Button type='primary' onClick={copyText}>
+     <Button type='primary' onClick={copyText} icon={<CopyOutlined />}>
       Copy
      </Button>
      <Divider />
