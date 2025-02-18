@@ -23,15 +23,21 @@ const Sha256Page = lazy(() => import('../views/hash/Sha256Page'));
 const HtpasswdPage = lazy(() => import('../views/hash/HtpasswdPage'));
 
 const NoMatch = lazy(() => import('../views/common/NoMatch'));
-const PrivacyPolicyPage = lazy(() => import('../views/common/PrivacyPolicyPage'));
+const PrivacyPolicyPage = lazy(
+ () => import('../views/common/PrivacyPolicyPage')
+);
 const DonatePage = lazy(() => import('../views/common/DonatePage'));
+const ContactsPage = lazy(() => import('../views/common/ContactsPage'));
 
-const FormatterHtmlPage = lazy(() => import('../views/formatter/FormatterHtmlPage'));
+const FormatterHtmlPage = lazy(
+ () => import('../views/formatter/FormatterHtmlPage')
+);
 const MinifyCssPage = lazy(() => import('../views/formatter/MinifyCssPage'));
 const BeautifyJsPage = lazy(() => import('../views/formatter/BeautifyJsPage'));
-const FormatterCssPage = lazy(() => import('../views/formatter/FormatterCssPage'));
+const FormatterCssPage = lazy(
+ () => import('../views/formatter/FormatterCssPage')
+);
 const MinifyJsonPage = lazy(() => import('../views/formatter/MinifyJsonPage'));
-
 
 const routes = createBrowserRouter([
  {
@@ -128,6 +134,11 @@ const routes = createBrowserRouter([
     path: 'donate',
     element: <DonatePage />,
     id: 'donate',
+   },
+   {
+    path: 'contacts',
+    element: <ContactsPage />,
+    id: 'contacts',
    },
    {
     path: 'url-encode',

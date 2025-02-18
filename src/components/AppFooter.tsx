@@ -38,7 +38,15 @@ export default function AppFooter() {
      <div>&copy; 2025 StringUtils</div>
 
      <div>
-      <Link to='/privacy-policy'>Privacy Policy</Link>
+      <nav>
+       <div>
+        <Link to='/contacts'>Contacts</Link>
+       </div>
+       <div>
+        <Link to='/privacy-policy'>Privacy Policy</Link>
+       </div>
+      </nav>
+
       {/* {cookieAgree === '1' && <AppCount />} */}
       <AppCount />
      </div>
