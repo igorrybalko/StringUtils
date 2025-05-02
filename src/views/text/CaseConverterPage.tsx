@@ -14,8 +14,8 @@ import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 import { CopyOutlined } from '@ant-design/icons';
 
-import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../../components/AppSidebar';
+import { useLoadPage } from '../../hooks';
 
 const { TextArea } = Input;
 

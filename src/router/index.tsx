@@ -12,8 +12,10 @@ const TranslitUrlPage = lazy(() => import('../views/TranslitUrlPage'));
 const UrlEncodePage = lazy(() => import('../views/string/UrlEncodePage'));
 const UrlDecodePage = lazy(() => import('../views/string/UrlDecodePage'));
 
-import CaseConverterPage from '../views/CaseConverterPage';
-import WordCounterPage from '../views/WordCounterPage';
+import CaseConverterPage from '../views/text/CaseConverterPage';
+import WordCounterPage from '../views/text/WordCounterPage';
+const StripTagsPage = lazy(() => import('../views/text/StripTagsPage'));
+
 import UnixtimestampPage from '../views/UnixtimestampPage';
 import UuidPage from '../views/hash/UuidPage';
 import JsonStringifyTextPage from '../views/JsonStringifyTextPage';
@@ -154,6 +156,11 @@ const routes = createBrowserRouter([
     path: 'htpasswd',
     element: <HtpasswdPage />,
     id: 'htpasswd',
+   },
+   {
+    path: 'strip-tags',
+    element: <StripTagsPage />,
+    id: 'strip-tags',
    },
    { path: '*', element: <NoMatch /> },
   ],

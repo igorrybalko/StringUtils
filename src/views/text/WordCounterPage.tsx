@@ -13,8 +13,8 @@ import {
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
-import AppSidebar from '../components/AppSidebar';
-import { useLoadPage } from '../hooks';
+import AppSidebar from '../../components/AppSidebar';
+import { useLoadPage } from '../../hooks';
 
 const { TextArea } = Input;
 
