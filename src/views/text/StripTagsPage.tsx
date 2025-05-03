@@ -9,7 +9,7 @@ import {
  Col,
  Row,
 } from 'antd';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 import { CopyOutlined } from '@ant-design/icons';
@@ -36,8 +36,6 @@ export default function StripTagsPage() {
  const [form] = Form.useForm();
 
  const trimValue: boolean = Form.useWatch('trim', form);
-
- const textRef = useRef<HTMLDivElement>(null);
 
  useLoadPage();
  const dispatch = useAppDispatch();
@@ -74,8 +72,8 @@ export default function StripTagsPage() {
 
  function setTxtForFile(txt: string, checked: boolean) {
   let copiedTxt = txt;
-  if (checked && textRef.current) {
-   copiedTxt = textRef.current.innerText;
+  if (checked) {
+   copiedTxt = txt.replace(/\s+/g, ' ');
   }
   setTxtDownload(copiedTxt);
  }
@@ -156,7 +154,6 @@ export default function StripTagsPage() {
 
      <div
       className='p-textarea mb-24'
-      ref={textRef}
       style={{ display: trimValue ? 'block' : 'none' }}
      >
       {result}
