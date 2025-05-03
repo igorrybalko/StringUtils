@@ -35,7 +35,7 @@ export default function CaseConverterPage() {
 
  useLoadPage();
 
- const navIds = [7];
+ const navIds = [7, 20];
 
  type ConvertOption = 'lc' | 'uc' | 'cc' | 'sc';
 

@@ -26,7 +26,7 @@ export default function WordCounterPage() {
 
  useLoadPage();
 
- const navIds = [6];
+ const navIds = [6, 20];
 
  const countWords = (str: string) => {
   str = str.trim();

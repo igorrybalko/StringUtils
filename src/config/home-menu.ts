@@ -56,8 +56,8 @@ const list = [
  },
  {
   url: '/strip-tags',
-  title: 'Remove html tags',
-  id: 19,
+  title: 'Remove HTML tags',
+  id: 20,
  },
  {
   url: '/unixtimestamp',

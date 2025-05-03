@@ -9,7 +9,7 @@ import {
  Col,
  Row,
 } from 'antd';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 import { Helmet } from 'react-helmet';
 import { CopyOutlined } from '@ant-design/icons';
@@ -17,16 +17,21 @@ import { CopyOutlined } from '@ant-design/icons';
 import AppSidebar from '../../components/AppSidebar';
 import DownloadBtn from '../../components/DowloadBtn';
 
-import { useLoadPage } from '../../hooks';
+import { useLoadPage, useAppDispatch } from '../../hooks';
+import { getPageContent } from '../../store/slices/common';
+import PageData from '../../classes/PageData';
 
 const { TextArea } = Input;
 
+const initPd = new PageData();
+
 export default function StripTagsPage() {
- const navIds = [7];
+ const navIds = [6, 7];
 
  const [result, setResult] = useState('');
  const [txtDownload, setTxtDownload] = useState('');
  const [api, contextHolder] = notification.useNotification();
+ const [pd, setPd] = useState(initPd);
 
  const [form] = Form.useForm();
 
@@ -35,6 +40,17 @@ export default function StripTagsPage() {
  const textRef = useRef<HTMLDivElement>(null);
 
  useLoadPage();
+ const dispatch = useAppDispatch();
+
+ useEffect(() => {
+  dispatch(getPageContent(15))
+   .unwrap()
+   .then((res) => {
+    const { title, content } = res;
+
+    setPd({ ...pd, content, title });
+   });
+ }, []);
 
  const onFinish = (val: { text: string; trim: boolean }) => {
   try {
@@ -85,10 +101,10 @@ export default function StripTagsPage() {
  return (
   <div>
    <Helmet>
-    <title>Case Converter Online Tools (Lowercase and Uppercase)</title>
+    <title>Strip HTML Tags Online – Remove & Clean HTML from Text</title>
     <meta
      name='description'
-     content='Online tool for convert string to uppercase, lowercase, capitalize words, sentence case. All caps to lowercase or uppercase.'
+     content='Use this free online tool to remove HTML tags from text directly in your browser. Fast, secure, and perfect for developers, editors, and content creators.'
     />
     <link
      rel='canonical'
@@ -98,7 +114,7 @@ export default function StripTagsPage() {
    {contextHolder}
    <Row gutter={[24, 0]}>
     <Col xs={24} sm={24} md={18}>
-     <h1>Remove HTML Tags from Text</h1>
+     <h1>{pd.title}</h1>
      <Form
       onFinish={onFinish}
       autoComplete='off'
@@ -157,39 +173,10 @@ export default function StripTagsPage() {
       <DownloadBtn name='stripped-tags.txt' content={txtDownload} />
      </Space>
      <Divider />
-     <div className='info-text'>
-      <h2>About Case Converter</h2>
-      <p>
-       Online tools for text case modification, allowing users to convert text
-       to <strong>uppercase</strong>, <strong>lowercase</strong>, or{' '}
-       <strong>capitalize</strong> words, are valuable for a variety of
-       purposes. Writers and editors can utilize these tools to ensure
-       consistent formatting and style in their documents. Content creators and
-       social media managers may find them handy for crafting eye-catching
-       headlines or captions. Additionally, programmers and developers can
-       streamline their coding practices by easily adjusting the case of
-       variables and identifiers. Overall, these online tools serve as versatile
-       aids for anyone seeking efficient and uniform text transformation,
-       enhancing readability and professionalism across different contexts.
-      </p>
-      <h3>Case converter examples</h3>
-      <ul>
-       <li>
-        <strong>Lowercase:</strong> all caps to lowercase
-       </li>
-       <li>
-        <strong>Uppercase:</strong> ALL CAPS TO UPPERCASE
-       </li>
-       <li>
-        <strong>Capitalized case:</strong> Every First Letter In A Word Is Set
-        To Uppercase
-       </li>
-       <li>
-        <strong>Sentence case:</strong> Every first letter in a sentence is set
-        to uppercase
-       </li>
-      </ul>
-     </div>
+     <div
+      className='info-text'
+      dangerouslySetInnerHTML={{ __html: pd.content }}
+     ></div>
     </Col>
     <Col xs={24} sm={24} md={6}>
      <AppSidebar ids={navIds} />
